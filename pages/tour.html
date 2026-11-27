@@ -3,13 +3,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tour Details — NorthPeak Tours</title>
-  <link rel="stylesheet" href="tour.css" />
+  <link rel="stylesheet" href="../css/tour.css" />
 </head>
 <body>
   <!-- Header & Navigation -->
   <header class="site-header">
     <div class="container nav-wrapper">
-      <a href="homepage.html" class="brand-logo">
+      <a href="../index.html" class="brand-logo">
         <span>NorthPeak <span class="brand-accent">Tours</span></span>
       </a>
       <button type="button" id="nav-toggle-btn" class="nav-toggle-btn" aria-expanded="false" aria-controls="nav-menu">
@@ -17,10 +17,12 @@
       </button>
 
       <nav id="nav-menu" class="nav-menu" aria-label="Main Navigation">
-        <a href="homepage.html" class="nav-link">Home</a>
-        <a href="destinations.html" class="nav-link">Featured Destinations</a>
-        <a href="tour-details.html" class="nav-link active">Tour Details</a>
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="destination.html" class="nav-link">Featured Destinations</a>
+        <a href="tour.html" class="nav-link active">Tour Details</a>
         <button type="button" id="open-saved-modal" class="nav-saved-btn">
+          &#9829; Saved <span id="saved-count-badge" class="saved-count-badge">0</span>
+        </button>
         <a href="#booking-form" class="nav-cta">Reserve Seat &rarr;</a>
       </nav>
     </div>
@@ -304,6 +306,6 @@
     </div>
   </footer>
 
-  <script src="tour.js"></script>
+  <script src="../js/tour.js"></script>
 </body>
 </html>
