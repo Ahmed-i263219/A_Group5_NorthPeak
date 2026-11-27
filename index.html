@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NorthPeak Tours — Home</title>
+  <link rel="stylesheet" href="homepage.css" />
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="homepage.html" class="brand-logo">
+        <img src="images/mountain-logo.jpeg" alt="NorthPeak mountain logo" width="44" height="44" />
+        <span>NorthPeak <span class="brand-accent">Tours</span></span>
+      </a>
+
+      <button type="button" id="nav-toggle-btn" class="nav-toggle-btn" aria-expanded="false" aria-controls="nav-menu">
+        Menu &#9776;
+      </button>
+
+      <nav id="nav-menu" class="nav-menu" aria-label="Main Navigation">
+        <a href="homepage.html" class="nav-link active">Home</a>
+        <a href="destinations.html" class="nav-link">Featured Destinations</a>
+        <a href="tour-details.html" class="nav-link">Tour Details</a>
+        <button type="button" id="open-saved-modal" class="nav-saved-btn">
+          &#9829; Saved <span id="saved-count-badge" class="saved-count-badge">0</span>
+        </button>
+        <a href="destinations.html" class="nav-cta">Explore Tours &rarr;</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <svg class="hero-mountains" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true">
+        <polygon points="0,200 180,85 360,165 560,50 780,150 1020,40 1240,145 1440,70 1440,200" fill="#081C34" />
+        <polygon points="0,200 240,120 450,180 710,95 930,175 1170,88 1440,160 1440,200" fill="#0B3B2E" />
+      </svg>
+
+      <div class="container hero-content">
+        <span class="badge badge-hero">&#9679; Gilgit-Baltistan &amp; Khyber Pakhtunkhwa</span>
+        <h1 class="hero-title">Explore Northern Peaks With Confidence</h1>
+        <p class="hero-subtitle">
+          Curated valley stays, authentic highland cuisine &amp; road stops, and real-time Karakoram
+          route safety—planned transparently for families and student travelers.
+        </p>
+
+        <!-- Search / Quick Filter Bar -->
+        <form id="home-search-form" class="search-bar-card" action="destinations.html" method="get">
+          <div class="search-field">
+            <label for="valley">Destination Valley</label>
+            <select id="valley" name="valley">
+              <option value="all">All Northern Valleys</option>
+              <option value="hunza">Hunza Valley</option>
+              <option value="skardu">Skardu &amp; Baltistan</option>
+              <option value="swat">Swat &amp; Kalam</option>
+              <option value="fairy-meadows">Fairy Meadows</option>
+              <option value="naran">Naran &amp; Kaghan</option>
+              <option value="kumrat">Kumrat Valley</option>
+            </select>
+          </div>
+
+          <div class="search-field">
+            <label for="season">Travel Season</label>
+            <select id="season" name="season">
+              <option value="summer">Summer Alpine (May – Aug)</option>
+              <option value="autumn">Autumn Colors (Sep – Oct)</option>
+              <option value="spring">Spring Blossom (Mar – Apr)</option>
+              <option value="winter">Winter Snow (Nov – Feb)</option>
+            </select>
+          </div>
+
+          <div class="search-field">
+            <label for="group">Group Size</label>
+            <select id="group" name="group">
+              <option value="4">4 Travelers (Family / Friends)</option>
+              <option value="2">2 Travelers (Couple)</option>
+              <option value="8">8 Travelers (Student Group)</option>
+              <option value="1">1 Traveler (Solo)</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-green">Explore Destinations &rarr;</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Key Metrics / Stats Strip -->
+    <section class="stats-section" aria-label="Platform Highlights">
+      <div class="container stats-grid">
+        <article class="stat-card">
+          <div class="stat-value is-blue">18+</div>
+          <div class="stat-label">Verified Valley Stays</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-value is-green">100%</div>
+          <div class="stat-label">KKH Route Safety Checks</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-value is-blue">24/7</div>
+          <div class="stat-label">Local Basecamp Support</div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-value is-green">4.9&#9733;</div>
+          <div class="stat-label">Student &amp; Family Rating</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Numbered Core Sections -->
+    <section class="section-pad">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Plan Your Northern Journey</h2>
+            <p class="section-desc">
+              Jump directly to curated valleys, detailed tour packages, and mountain safety readiness.
+            </p>
+          </div>
+          <a href="destinations.html" class="btn btn-outline">Browse All Valleys &rarr;</a>
+        </div>
+
+        <div class="feature-cards-grid">
+          <a href="destinations.html" class="feature-card theme-blue">
+            <div class="feature-num">01</div>
+            <div class="feature-body">
+              <h3>Featured Destinations &rarr;</h3>
+              <p>
+                Filter northern valleys by elevation, season &amp; budget across Hunza, Skardu, Swat,
+                and Fairy Meadows.
+              </p>
+            </div>
+          </a>
+
+          <a href="tour-details.html" class="feature-card theme-green">
+            <div class="feature-num">02</div>
+            <div class="feature-body">
+              <h3>Tour Details &amp; Itineraries &rarr;</h3>
+              <p>
+                Explore day-by-day mountain schedules, transport specs, meal inclusions, and transparent
+                PKR pricing.
+              </p>
+            </div>
+          </a>
+
+          <a href="tour-details.html#safety-info" class="feature-card theme-blue">
+            <div class="feature-num">03</div>
+            <div class="feature-body">
+              <h3>Mountain Safety &amp; Check-In &rarr;</h3>
+              <p>
+                Review KKH advisories, altitude tips, and direct Gilgit &amp; Skardu basecamp helpline
+                support.
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Saved Trips Modal -->
+  <div id="saved-trips-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="saved-modal-title">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="saved-modal-title">Your Saved Trips</h3>
+        <button type="button" id="close-saved-modal" class="modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <div id="saved-trips-list"></div>
+    </div>
+  </div>
+
+  <!-- Dark Navy Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">NorthPeak <span>Tours</span></div>
+          <p class="footer-text">
+            Responsible mountain tourism across Gilgit-Baltistan and Khyber Pakhtunkhwa. Built with
+            a clean Blue, White &amp; Green design system.
+          </p>
+          <p class="footer-text"><a href="mailto:i263022@nu.pk">i263022@nu.pk</a></p>
+          <p class="footer-text"><a href="mailto:i263037@nu.pk">i263037@nu.pk</a></p>
+          <p class="footer-text"><a href="mailto:i263023@isb.edu.pk">i263023@isb.edu.pk</a></p>
+          <p class="footer-text"><a href="mailto:i263034@isb.edu.pk">i263034@isb.edu.pk</a></p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="homepage.html">Home Overview</a></li>
+            <li><a href="destinations.html">Featured Destinations</a></li>
+            <li><a href="tour-details.html">Tour Details &amp; Itinerary</a></li>
+            <li><a href="tour-details.html#safety-info">Mountain Safety Guide</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-contact">
+          <h4>Northern Helpline</h4>
+          <p>Gilgit &amp; Skardu Basecamp Desk: <strong>+92 5811 450920</strong></p>
+          <p>Email: <a href="mailto:safety@northpeaktours.pk">safety@northpeaktours.pk</a></p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 NorthPeak Tours &mdash; Academic Web Prototype &amp; Layout Inspiration.</p>
+        <div class="ai-disclosure">
+          Custom SVG graphics used; no AI-generated raster images are present on this website.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="homepage.js"></script>
+</body>
+</html>
