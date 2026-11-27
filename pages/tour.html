@@ -1,0 +1,307 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tour Details — NorthPeak Tours</title>
+  <link rel="stylesheet" href="tour.css" />
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="homepage.html" class="brand-logo">
+        <img src="images/mountain-logo.jpeg" alt="NorthPeak mountain logo" width="44" height="44" />
+        <span>NorthPeak <span class="brand-accent">Tours</span></span>
+      </a>
+      <button type="button" id="nav-toggle-btn" class="nav-toggle-btn" aria-expanded="false" aria-controls="nav-menu">
+        Menu &#9776;
+      </button>
+
+      <nav id="nav-menu" class="nav-menu" aria-label="Main Navigation">
+        <a href="homepage.html" class="nav-link">Home</a>
+        <a href="destinations.html" class="nav-link">Featured Destinations</a>
+        <a href="tour-details.html" class="nav-link active">Tour Details</a>
+        <button type="button" id="open-saved-modal" class="nav-saved-btn">
+        <a href="#booking-form" class="nav-cta">Reserve Seat &rarr;</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Banner -->
+    <section class="page-banner">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="homepage.html">Home</a>
+          <span>/</span>
+          <a href="destinations.html">Featured Destinations</a>
+          <span>/</span>
+          <span>Tour Details</span>
+        </div>
+        <h1 id="tour-page-title">7-Day Hunza, Attabad &amp; Khunjerab Expedition</h1>
+        <p id="tour-page-desc">
+          Complete guided mountain tour from Islamabad covering Karimabad, Baltit Fort, Attabad
+          Lake, Hussaini Bridge, and Khunjerab Pass with verified accommodations.
+        </p>
+      </div>
+    </section>
+
+    <!-- Key Highlights Strip -->
+    <section class="tour-highlights-strip" aria-label="Tour Specifications">
+      <div class="container highlights-grid">
+        <div class="highlight-item">
+          <span>Duration</span>
+          <strong id="spec-duration">7 Days / 6 Nights</strong>
+        </div>
+        <div class="highlight-item">
+          <span>Max Altitude</span>
+          <strong id="spec-altitude">4,693m (Khunjerab Pass)</strong>
+        </div>
+        <div class="highlight-item">
+          <span>Transport</span>
+          <strong id="spec-transport">Toyota Grand Cabin / Coaster</strong>
+        </div>
+        <div class="highlight-item">
+          <span>Rating &amp; Group</span>
+          <strong id="spec-rating">4.9 &#9733; &bull; 4–12 Travelers</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two-Column Tour Content + Booking Sidebar -->
+    <section class="section-pad">
+      <div class="container tour-layout">
+        <!-- Left Main Column -->
+        <div>
+          <!-- Overview Card -->
+          <article class="detail-card">
+            <h2>Expedition Overview</h2>
+            <p class="lead-muted">
+              Designed for university groups and families seeking safe, transparent mountain travel,
+              this expedition pairs comfortable valley lodges with calibrated daily driving distances
+              and certified Karakoram drivers.
+            </p>
+            <ul class="check-list">
+              <li>Verified heritage &amp; valley-view lodges</li>
+              <li>Daily breakfast &amp; traditional dinner included</li>
+              <li>KKH weather &amp; landslide monitoring</li>
+              <li>Guided entry to local heritage sites</li>
+              <li>First-aid &amp; portable oxygen cylinder on board</li>
+              <li>Zero hidden toll or fuel surcharges</li>
+            </ul>
+          </article>
+
+          <!-- Interactive Day-by-Day Itinerary Accordion -->
+          <article class="detail-card">
+            <div class="itinerary-header">
+              <h2>Day-by-Day Itinerary</h2>
+              <button type="button" id="toggle-all-days-btn" class="btn btn-outline btn-sm">
+                Expand All Days
+              </button>
+            </div>
+            <div id="itinerary-list" class="itinerary-list"></div>
+          </article>
+
+          <!-- Inclusions & Exclusions -->
+          <article class="detail-card">
+            <h2>What's Included &amp; Excluded</h2>
+            <div class="inc-exc-grid">
+              <div class="inc-box">
+                <h3>Included in Package</h3>
+                <ul>
+                  <li>Private air-conditioned mountain transport</li>
+                  <li>Twin/quad-sharing verified stays</li>
+                  <li>Daily breakfast &amp; traditional dinner</li>
+                  <li>Dedicated tour captain &amp; local guide</li>
+                  <li>All highway tolls, fuel &amp; parking fees</li>
+                </ul>
+              </div>
+              <div class="exc-box">
+                <h3>Not Included</h3>
+                <ul>
+                  <li>Afternoon highway lunches &amp; snacks</li>
+                  <li>Fort &amp; National Park entry tickets</li>
+                  <li>Optional boating or zip-line rides</li>
+                  <li>Personal trekking gear &amp; insurance</li>
+                  <li>Any expenses due to natural roadblocks</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Safety Advisory Section -->
+          <article id="safety-info" class="detail-card safety-card">
+            <h2>Mountain Safety &amp; Altitude Advisory</h2>
+            <p class="lead-muted">
+              High mountain passes reach elevations where oxygen levels drop noticeably. Hydrate
+              regularly, carry warm windproof layers even in summer, and register an emergency contact
+              with our Gilgit Basecamp Desk prior to departure.
+            </p>
+            <span class="badge badge-green">&#10003; Verified Satellite Check-In at Basecamp</span>
+          </article>
+        </div>
+
+        <!-- Right Sticky Sidebar -->
+        <aside class="sidebar-sticky">
+          <div id="booking-form" class="booking-card">
+            <div class="price-header">
+              <div>
+                <strong id="sidebar-unit-price">PKR 68,500</strong>
+                <span>/ per person</span>
+              </div>
+              <span class="badge badge-green">Available</span>
+            </div>
+
+            <form id="tour-reservation-form" novalidate>
+              <div class="form-group">
+                <label for="departure-date">Preferred Departure</label>
+                <select id="departure-date" name="departure">
+                  <option>June 14 – June 20 (Summer Batch)</option>
+                  <option>July 05 – July 11 (Family Batch)</option>
+                  <option>October 10 – October 16 (Autumn Batch)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="room-type">Accommodation Tier</label>
+                <select id="room-type" name="room">
+                  <option value="standard">Standard Quad (Student Group)</option>
+                  <option value="deluxe">Deluxe Twin (+PKR 8,500 / person)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="traveler-count">Number of Travelers (1–15)</label>
+                <input type="number" id="traveler-count" min="1" max="15" value="4" />
+              </div>
+
+              <div class="form-group">
+                <label for="promo-code">Promo Code (Try STUDENT10 or FAMILY5)</label>
+                <div class="promo-row">
+                  <input type="text" id="promo-code" placeholder="e.g. STUDENT10" />
+                  <button type="button" id="apply-promo-btn" class="btn btn-outline btn-sm">Apply</button>
+                </div>
+                <span id="promo-feedback" class="promo-feedback" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="traveler-name">Full Name</label>
+                <input type="text" id="traveler-name" placeholder="e.g. Ayesha Khan" required />
+                <span id="name-error" class="field-error" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="traveler-phone">WhatsApp / Contact Number</label>
+                <input type="tel" id="traveler-phone" placeholder="+92 300 1234567" required />
+                <span id="phone-error" class="field-error" aria-live="polite"></span>
+              </div>
+
+              <div class="booking-summary" aria-live="polite">
+                <div class="summary-row">
+                  <span>Base Package</span>
+                  <span id="summary-base">PKR 260,000 (4x)</span>
+                </div>
+                <div class="summary-row">
+                  <span>Room Tier Upgrade</span>
+                  <span id="summary-upgrade">PKR 0</span>
+                </div>
+                <div class="summary-row">
+                  <span>Safety &amp; Basecamp Support</span>
+                  <span id="summary-support">PKR 14,000</span>
+                </div>
+                <div id="summary-discount-row" class="summary-row is-discount" hidden>
+                  <span>Promo Discount</span>
+                  <span id="summary-discount">-PKR 0</span>
+                </div>
+                <div class="summary-row total">
+                  <span>Total Estimate</span>
+                  <span id="summary-total">PKR 274,000</span>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-green btn-full">
+                Request Seat Reservation &rarr;
+              </button>
+
+              <div id="saved-booking-banner" class="saved-booking-banner" hidden></div>
+            </form>
+          </div>
+
+          <div class="helpline-card">
+            <h3>Northern Helpline</h3>
+            <p>Need custom dates for a university or family group?</p>
+            <p><strong>Basecamp Desk:</strong> +92 5811 450920</p>
+            <p><strong>Email:</strong> safety@northpeaktours.pk</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- Saved Trips Modal -->
+  <div id="saved-trips-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="saved-modal-title">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="saved-modal-title">Your Saved Trips</h3>
+        <button type="button" id="close-saved-modal" class="modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <div id="saved-trips-list"></div>
+    </div>
+  </div>
+
+  <!-- Booking Confirmation Modal -->
+  <div id="booking-confirm-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="confirm-modal-title">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="confirm-modal-title">Reservation Request Received</h3>
+        <button type="button" id="close-confirm-modal" class="modal-close-btn" aria-label="Close confirmation">&times;</button>
+      </div>
+      <div id="booking-confirm-details" class="lead-muted"></div>
+    </div>
+  </div>
+
+  <!-- Dark Navy Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">NorthPeak <span>Tours</span></div>
+          <p class="footer-text">
+            Responsible mountain tourism across Gilgit-Baltistan and Khyber Pakhtunkhwa. Built with
+            a clean Blue, White &amp; Green design system.
+          </p>
+          <p class="footer-text"><a href="mailto:i263022@nu.pk">i263022@nu.pk</a></p>
+          <p class="footer-text"><a href="mailto:i263037@nu.pk">i263037@nu.pk</a></p>
+          <p class="footer-text"><a href="mailto:i263023@isb.edu.pk">i263023@isb.edu.pk</a></p>
+          <p class="footer-text"><a href="mailto:i263034@isb.edu.pk">i263034@isb.edu.pk</a></p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="homepage.html">Home Overview</a></li>
+            <li><a href="destinations.html">Featured Destinations</a></li>
+            <li><a href="tour-details.html">Tour Details &amp; Itinerary</a></li>
+            <li><a href="tour-details.html#safety-info">Mountain Safety Guide</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-contact">
+          <h4>Northern Helpline</h4>
+          <p>Gilgit &amp; Skardu Basecamp Desk: <strong>+92 5811 450920</strong></p>
+          <p>Email: <a href="mailto:safety@northpeaktours.pk">safety@northpeaktours.pk</a></p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 NorthPeak Tours &mdash; Academic Web Prototype &amp; Layout Inspiration.</p>
+        <div class="ai-disclosure">
+          Custom SVG graphics used; no AI-generated raster images are present on this website.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="tour.js"></script>
+</body>
+</html>
