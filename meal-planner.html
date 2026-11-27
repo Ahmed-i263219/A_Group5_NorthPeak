@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Meal &amp; Snack Cost Calculator | NorthPeak Tours</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="dining.html" aria-label="NorthPeak Northern Travel Tours Home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 19L9.5 7l4.5 7 2.5-3.5L21 19H3z" />
+            <path d="M8.5 11.5L10.5 13l2-1.5" />
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">NorthPeak</span>
+          <span class="brand-tagline">Northern Travel Tours</span>
+        </span>
+      </a>
+
+      <nav class="header-nav" aria-label="Primary Navigation">
+        <a class="header-nav-link" href="dining.html">Local Cuisine</a>
+        <a class="header-nav-link" href="snacks.html">KKH Stopovers</a>
+        <a class="header-nav-link" href="meal-planner.html">Budget Planner</a>
+        <a class="header-cta" href="meal-planner.html">Plan Food Budget</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="hero-eyebrow">Trip Budgeting &middot; Live PKR Estimator</span>
+      <h1>Daily Meal &amp; Snack Cost Calculator</h1>
+      <p>
+        Estimate your group's complete food budget across Northern Pakistan. Adjust travelers, trip
+        days, meal tier, and dietary preferences for an instant PKR breakdown.
+      </p>
+    </div>
+  </section>
+
+  <nav class="subnav-bar" aria-label="NorthPeak Dining Sections">
+    <div class="container subnav-tabs">
+      <a class="subnav-tab" href="dining.html">
+        Local Cuisine &amp; Dining Guide <span class="tab-badge">4 Dishes</span>
+      </a>
+      <a class="subnav-tab" href="snacks.html">
+        Highway Chai &amp; Road Snack Stopovers <span class="tab-badge">KKH Stops</span>
+      </a>
+      <a class="subnav-tab is-active" href="meal-planner.html" aria-current="page">
+        Daily Meal &amp; Snack Cost Calculator <span class="tab-badge">PKR</span>
+      </a>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="container">
+      <div class="planner-layout">
+        <section class="panel-card" aria-labelledby="planner-inputs-heading">
+          <h2 id="planner-inputs-heading">Trip Meal Parameters</h2>
+          <p class="panel-subtitle">
+            Every change immediately updates your live PKR budget estimate on the right.
+          </p>
+
+          <form id="meal-planner-form" novalidate>
+            <div class="form-grid">
+              <div class="form-field">
+                <label class="form-label" for="travelers-input">Travelers</label>
+                <input
+                  id="travelers-input"
+                  name="travelers"
+                  type="number"
+                  class="form-control"
+                  min="1"
+                  max="50"
+                  value="2"
+                  required
+                />
+                <span class="field-hint">Group size (1–50 travelers)</span>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="days-input">Trip Days</label>
+                <input
+                  id="days-input"
+                  name="days"
+                  type="number"
+                  class="form-control"
+                  min="1"
+                  max="30"
+                  value="5"
+                  required
+                />
+                <span class="field-hint">Duration on road &amp; valleys (1–30 days)</span>
+              </div>
+
+              <div class="form-field form-field--full">
+                <label class="form-label" for="meal-tier-select">Meal Tier</label>
+                <select id="meal-tier-select" name="mealTier" class="form-control">
+                  <option value="standard">Standard Trail — PKR 1,800 / person / day</option>
+                  <option value="explorer" selected>Explorer Comfort — PKR 2,800 / person / day</option>
+                  <option value="alpine">Alpine Signature — PKR 4,200 / person / day</option>
+                </select>
+                <span class="field-hint">
+                  Covers breakfast, valley lunch/dinner, and hot tea at NorthPeak partner kitchens.
+                </span>
+              </div>
+
+              <div class="form-field form-field--full">
+                <label class="form-label" for="dietary-select">Dietary Preference</label>
+                <select id="dietary-select" name="dietaryPreference" class="form-control">
+                  <option value="standard" selected>Standard (All Local Dishes) — PKR 0 / day</option>
+                  <option value="vegetarian">Vegetarian Friendly — -PKR 250 / day</option>
+                  <option value="halal_premium">Chef-Sourced Fresh Trout &amp; Grill — +PKR 450 / day</option>
+                  <option value="gluten_conscious">Custom Mountain Prep — +PKR 300 / day</option>
+                </select>
+                <span class="field-hint">
+                  Tailors ingredient sourcing and kitchen preparation across remote mountain valleys.
+                </span>
+              </div>
+
+              <div class="form-field form-field--full">
+                <label class="checkbox-row" for="include-snacks-check">
+                  <input id="include-snacks-check" name="includeSnacks" type="checkbox" checked />
+                  <span>
+                    <strong>Include Daily KKH Highway Chai &amp; Road Snack Allowance</strong><br />
+                    <span class="field-hint">
+                      Adds PKR 450 per person/day for Summit Masala Chai, samosas, and walnut cake stops.
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-outline" id="reset-planner-btn">
+                Reset to Default Trip
+              </button>
+              <a class="btn btn-outline" href="dining.html">Review Dish Prices</a>
+              <a class="btn btn-outline" href="snacks.html">Build Custom Snack Pack</a>
+            </div>
+          </form>
+        </section>
+
+        <aside class="summary-card" aria-labelledby="live-summary-heading" aria-live="polite">
+          <h2 id="live-summary-heading">Live Food Budget Summary</h2>
+          <p class="summary-subtitle">Calculated automatically in Pakistani Rupees (PKR)</p>
+
+          <div class="total-hero">
+            <span class="total-hero-label">Total Estimated Food Budget</span>
+            <span class="total-hero-value" id="planner-total-budget">PKR 32,500</span>
+          </div>
+
+          <ul class="breakdown-list">
+            <li class="breakdown-item">
+              <span>Travelers &times; Trip Days</span>
+              <strong id="summary-traveler-days">2 &times; 5 (10 traveler-days)</strong>
+            </li>
+            <li class="breakdown-item">
+              <span>Selected Meal Tier</span>
+              <strong id="summary-tier-rate">Explorer Comfort (PKR 2,800/day)</strong>
+            </li>
+            <li class="breakdown-item">
+              <span>Dietary Preference</span>
+              <strong id="summary-diet-adjust">Standard (PKR 0/day)</strong>
+            </li>
+            <li class="breakdown-item">
+              <span>KKH Chai &amp; Snack Stops</span>
+              <strong id="summary-snack-allowance">PKR 450/person/day</strong>
+            </li>
+            <li class="breakdown-item">
+              <span>Estimated Total / Traveler</span>
+              <strong id="summary-per-person">PKR 16,250</strong>
+            </li>
+            <li class="breakdown-item">
+              <span>Estimated Daily Group Cost</span>
+              <strong id="summary-daily-group">PKR 6,500</strong>
+            </li>
+          </ul>
+
+          <div class="pairing-note" id="summary-pairing-note">
+            Balanced daily dining featuring Diram Fitti, Chapshuro (PKR 750), Balti Mantu (PKR 950),
+            and hot valley teas.
+          </div>
+
+          <a class="btn btn-primary btn-full" href="snacks.html">
+            Customize Road Snack Stopovers &rarr;
+          </a>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>NorthPeak Tours</h3>
+          <p>
+            Guided overland expeditions across the Karakoram, Hindu Kush, and Himalayas with vetted
+            mountain lodges, hygienic dining kitchens, and scenic highway stopovers.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Dining &amp; Route Tools</h3>
+          <ul class="footer-links">
+            <li><a href="dining.html">Local Cuisine &amp; Dining Guide</a></li>
+            <li><a href="snacks.html">Highway Chai &amp; KKH Stopovers</a></li>
+            <li><a href="meal-planner.html">Daily Meal &amp; Snack Calculator</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Northern Corridors</h3>
+          <ul class="footer-links">
+            <li>Hunza &amp; Gojal Valley</li>
+            <li>Skardu &amp; Shigar Baltistan</li>
+            <li>Swat, Mingora &amp; Kalam</li>
+            <li>Karakoram Highway (N-35)</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Tour Dispatch Desk</h3>
+          <ul class="footer-links">
+            <li>Jutial Main Road, Gilgit</li>
+            <li>F-7 Markaz Desk, Islamabad</li>
+            <li>Daily Dispatch: 07:00 – 21:00 PKT</li>
+            <li>All prices listed in PKR</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 NorthPeak Northern Travel Tours. All rights reserved.</span>
+        <span>Crafted for Karakoram &amp; Alpine Travelers</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

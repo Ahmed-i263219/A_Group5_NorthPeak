@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local Cuisine &amp; Northern Dining Guide | NorthPeak Tours</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="dining.html" aria-label="NorthPeak Northern Travel Tours Home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 19L9.5 7l4.5 7 2.5-3.5L21 19H3z" />
+            <path d="M8.5 11.5L10.5 13l2-1.5" />
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">NorthPeak</span>
+          <span class="brand-tagline">Northern Travel Tours</span>
+        </span>
+      </a>
+
+      <nav class="header-nav" aria-label="Primary Navigation">
+        <a class="header-nav-link" href="dining.html">Local Cuisine</a>
+        <a class="header-nav-link" href="snacks.html">KKH Stopovers</a>
+        <a class="header-nav-link" href="meal-planner.html">Budget Planner</a>
+        <a class="header-cta" href="meal-planner.html">Plan Food Budget</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="hero-eyebrow">Culinary Trail &middot; Hunza, Baltistan &amp; Swat</span>
+      <h1>Local Cuisine &amp; Northern Dining Guide</h1>
+      <p>
+        Explore authentic mountain dishes served across NorthPeak tour routes—from apricot-oil
+        breakfast flatbreads in Hunza to freshly grilled glacial trout in Swat Valley.
+      </p>
+    </div>
+  </section>
+
+  <nav class="subnav-bar" aria-label="NorthPeak Dining Sections">
+    <div class="container subnav-tabs">
+      <a class="subnav-tab is-active" href="dining.html" aria-current="page">
+        Local Cuisine &amp; Dining Guide <span class="tab-badge">4 Dishes</span>
+      </a>
+      <a class="subnav-tab" href="snacks.html">
+        Highway Chai &amp; Road Snack Stopovers <span class="tab-badge">KKH Stops</span>
+      </a>
+      <a class="subnav-tab" href="meal-planner.html">
+        Daily Meal &amp; Snack Cost Calculator <span class="tab-badge">PKR</span>
+      </a>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2>Signature Northern Specialities</h2>
+          <p>Filter our curated mountain dishes by meal time or dietary preference.</p>
+        </div>
+        <span class="result-count" id="dining-result-count" aria-live="polite">4 specialities shown</span>
+      </div>
+
+      <div class="filter-bar" role="group" aria-label="Filter northern dishes">
+        <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">
+          All Specialities
+        </button>
+        <button type="button" class="filter-btn" data-filter="breakfast" aria-pressed="false">
+          Breakfast
+        </button>
+        <button type="button" class="filter-btn" data-filter="dinner" aria-pressed="false">
+          Dinner
+        </button>
+        <button type="button" class="filter-btn" data-filter="vegetarian" aria-pressed="false">
+          Vegetarian Friendly
+        </button>
+      </div>
+
+      <div class="card-grid" id="dining-grid">
+        <article class="dish-card" data-categories="breakfast,vegetarian">
+          <div class="card-banner card-banner--green">
+            <span class="card-region">Hunza Valley</span>
+            <span class="price-pill">PKR 550</span>
+          </div>
+          <div class="card-body">
+            <div class="card-title-row">
+              <h3 class="card-title">Diram Fitti</h3>
+            </div>
+            <p class="card-desc">
+              Traditional sprouted whole-wheat flatbread cooked slowly on a stone griddle and finished
+              with warm cold-pressed Hunza apricot kernel oil and mountain butter.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Breakfast</span>
+              <span class="tag tag--veg">Vegetarian Friendly</span>
+            </div>
+            <div class="card-meta">
+              <span>Served: Morning Heritage Stops</span>
+              <span>Naturally sweet wheat</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="dish-card" data-categories="dinner">
+          <div class="card-banner">
+            <span class="card-region">Gilgit &amp; Hunza</span>
+            <span class="price-pill">PKR 750</span>
+          </div>
+          <div class="card-body">
+            <div class="card-title-row">
+              <h3 class="card-title">Chapshuro</h3>
+            </div>
+            <p class="card-desc">
+              Golden crisp-baked pastry pocket stuffed with finely chopped beef or mutton, spring
+              onions, coriander, and crushed mountain pepper—ideal after high-altitude treks.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Dinner</span>
+              <span class="tag">Wood-Fired</span>
+            </div>
+            <div class="card-meta">
+              <span>Served: Evening Village Kitchens</span>
+              <span>Feeds 1–2 travelers</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="dish-card" data-categories="dinner">
+          <div class="card-banner">
+            <span class="card-region">Skardu &amp; Baltistan</span>
+            <span class="price-pill">PKR 950</span>
+          </div>
+          <div class="card-body">
+            <div class="card-title-row">
+              <h3 class="card-title">Balti Mantu</h3>
+            </div>
+            <p class="card-desc">
+              Hand-pleated steamed Balti dumplings packed with aromatic minced meat and caramelized
+              onions, topped with tangy garlic-yogurt and roasted tomato sauce.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Dinner</span>
+              <span class="tag">Steam Platter</span>
+            </div>
+            <div class="card-meta">
+              <span>Served: Skardu Old Bazaar</span>
+              <span>8 steamed dumplings</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="dish-card" data-categories="dinner">
+          <div class="card-banner">
+            <span class="card-region">Swat &amp; Kalam</span>
+            <span class="price-pill">PKR 1,450</span>
+          </div>
+          <div class="card-body">
+            <div class="card-title-row">
+              <h3 class="card-title">Grilled Swat Trout</h3>
+            </div>
+            <p class="card-desc">
+              Fresh cold-water rainbow trout caught from glacial Swat River tributaries, marinated in
+              lemon, garlic, and wild thyme, then flame-grilled beside the riverbank.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Dinner</span>
+              <span class="tag">Riverside Grill</span>
+            </div>
+            <div class="card-meta">
+              <span>Served: Kalam &amp; Bahrain</span>
+              <span>Whole trout + naan</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <p class="pack-empty" id="dining-empty-state" hidden>
+        No dishes matched that filter. Select "All Specialities" to view all northern menu items.
+      </p>
+
+      <aside class="info-strip" aria-label="Next Steps for Tour Planning">
+        <div>
+          <h3>Planning highway stops or full-trip meal budgets?</h3>
+          <p>
+            Pair these valley dinners with KKH chai breaks or calculate your group's complete food cost in PKR.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.65rem; flex-wrap: wrap;">
+          <a class="btn btn-outline" href="snacks.html">Explore KKH Snacks</a>
+          <a class="btn btn-primary" href="meal-planner.html">Open Meal Calculator</a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>NorthPeak Tours</h3>
+          <p>
+            Guided overland expeditions across the Karakoram, Hindu Kush, and Himalayas with vetted
+            mountain lodges, hygienic dining kitchens, and scenic highway stopovers.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Dining &amp; Route Tools</h3>
+          <ul class="footer-links">
+            <li><a href="dining.html">Local Cuisine &amp; Dining Guide</a></li>
+            <li><a href="snacks.html">Highway Chai &amp; KKH Stopovers</a></li>
+            <li><a href="meal-planner.html">Daily Meal &amp; Snack Calculator</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Northern Corridors</h3>
+          <ul class="footer-links">
+            <li>Hunza &amp; Gojal Valley</li>
+            <li>Skardu &amp; Shigar Baltistan</li>
+            <li>Swat, Mingora &amp; Kalam</li>
+            <li>Karakoram Highway (N-35)</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Tour Dispatch Desk</h3>
+          <ul class="footer-links">
+            <li>Jutial Main Road, Gilgit</li>
+            <li>F-7 Markaz Desk, Islamabad</li>
+            <li>Daily Dispatch: 07:00 – 21:00 PKT</li>
+            <li>All prices listed in PKR</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 NorthPeak Northern Travel Tours. All rights reserved.</span>
+        <span>Crafted for Karakoram &amp; Alpine Travelers</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
