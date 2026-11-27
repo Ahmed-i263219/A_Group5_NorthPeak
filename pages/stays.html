@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Northern Valley Stays — NorthPeak Tours</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="stays.css" />
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="../index.html" class="brand-logo">
+        <img src="mountain-logo.jpeg" alt="NorthPeak mountain logo" width="44" height="44" />
+        <span>NorthPeak <span class="brand-accent">Tours</span></span>
+      </a>
+
+      <button
+        type="button"
+        id="nav-toggle-btn"
+        class="nav-toggle-btn"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+      >
+        Menu &#9776;
+      </button>
+
+      <nav id="nav-menu" class="nav-menu" aria-label="Main Navigation">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="destination.html" class="nav-link">Featured Destinations</a>
+        <a href="tour.html" class="nav-link">Tour Details</a>
+        <a href="stays.html" class="nav-link active">Stays</a>
+        <button type="button" id="open-saved-modal" class="nav-saved-btn">
+          &#9829; Saved <span id="saved-count-badge" class="saved-count-badge">0</span>
+        </button>
+        <a href="#stays-catalog" class="nav-cta">Browse Stays &rarr;</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section with Mountain SVG & Stay Search Filters -->
+    <section class="hero">
+      <svg class="hero-mountains" viewBox="0 0 1440 200" preserveAspectRatio="none" aria-hidden="true">
+        <polygon points="0,200 180,85 360,165 560,50 780,150 1020,40 1240,145 1440,70 1440,200" fill="#081C34" />
+        <polygon points="0,200 240,120 450,180 710,95 930,175 1170,88 1440,160 1440,200" fill="#0B3B2E" />
+      </svg>
+
+      <div class="container hero-content">
+        <span class="badge-hero">&#9679; Verified Mountain Lodges &amp; Valley Hotels</span>
+        <h1 class="hero-title">Where to stay in the North</h1>
+        <p class="hero-subtitle">
+          Compare handpicked mountain hotels and pine chalets across Hunza, Naltar, Duikar, Skardu,
+          Kalam, and Naran with transparent PKR nightly rates.
+        </p>
+
+        <!-- Working Destination, Check-in, Check-out, and Guests Filter Bar -->
+        <form id="stays-filter-form" class="search-bar-card" novalidate>
+          <div class="search-field">
+            <label for="filter-destination">Destination</label>
+            <select id="filter-destination" name="destination" class="form-select">
+              <option value="all">All Northern Valleys</option>
+              <option value="hunza">Hunza Valley</option>
+              <option value="naltar">Naltar Valley</option>
+              <option value="duikar">Duikar (Eagle's Nest)</option>
+              <option value="skardu">Skardu &amp; Kachura</option>
+              <option value="kalam">Kalam, Swat</option>
+              <option value="naran">Naran, Kaghan</option>
+            </select>
+          </div>
+
+          <div class="search-field">
+            <label for="filter-checkin">Check-in</label>
+            <input type="date" id="filter-checkin" name="checkin" class="form-control" required />
+          </div>
+
+          <div class="search-field">
+            <label for="filter-checkout">Check-out</label>
+            <input type="date" id="filter-checkout" name="checkout" class="form-control" required />
+          </div>
+
+          <div class="search-field">
+            <label for="filter-guests">Guests</label>
+            <select id="filter-guests" name="guests" class="form-select">
+              <option value="1">1 Guest</option>
+              <option value="2" selected>2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5">5 Guests</option>
+              <option value="6">6 Guests</option>
+              <option value="8">8 Guests (Group)</option>
+            </select>
+          </div>
+
+          <div class="search-actions">
+            <button type="submit" class="btn-green">Search Stays &rarr;</button>
+            <button type="button" id="reset-filters-btn" class="btn-reset" title="Reset all filters">
+              Reset
+            </button>
+          </div>
+        </form>
+
+        <p id="filter-feedback" class="filter-feedback" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- Informative Slides Banner -->
+    <section class="slides-section" aria-label="Travel & Stay Advisory Slides">
+      <div class="container">
+        <div
+          id="stays-info-carousel"
+          class="carousel slide info-carousel"
+          data-bs-ride="carousel"
+          data-bs-interval="5500"
+        >
+          <div class="carousel-indicators info-carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#stays-info-carousel"
+              data-bs-slide-to="0"
+              class="active"
+              aria-current="true"
+              aria-label="Slide 1: Seasonal Booking Windows"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#stays-info-carousel"
+              data-bs-slide-to="1"
+              aria-label="Slide 2: Heating and Power Backup"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#stays-info-carousel"
+              data-bs-slide-to="2"
+              aria-label="Slide 3: Road Access and Jeep Transfers"
+            ></button>
+          </div>
+
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="slide-card theme-navy">
+                <div class="slide-copy">
+                  <span class="slide-tag">Informative Slide 01 &bull; Peak Seasons</span>
+                  <h2>Book Early for Cherry Blossom &amp; Autumn Colors</h2>
+                  <p>
+                    Hunza and Duikar ridge hotels fill up 3–4 weeks ahead during Spring Blossom
+                    (March–April) and Golden Autumn (October). Check live dates above to lock in
+                    verified PKR rates with zero hidden surcharges.
+                  </p>
+                </div>
+                <div class="slide-stats">
+                  <div class="slide-stat-pill">
+                    <strong>Mar – Apr</strong>
+                    <span>Apricot Blossom</span>
+                  </div>
+                  <div class="slide-stat-pill">
+                    <strong>Jun – Aug</strong>
+                    <span>High Passes Open</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="slide-card theme-emerald">
+                <div class="slide-copy">
+                  <span class="slide-tag">Informative Slide 02 &bull; Mountain Comfort</span>
+                  <h2>Verified Heating, Solar Backup &amp; Hot Water</h2>
+                  <p>
+                    Mountain temperatures drop sharply after sunset even in summer. Every stay on
+                    NorthPeak Tours includes backup generator/solar power, 24/7 hot water, and
+                    complimentary regional breakfast.
+                  </p>
+                </div>
+                <div class="slide-stats">
+                  <div class="slide-stat-pill">
+                    <strong>100%</strong>
+                    <span>Power Backup Verified</span>
+                  </div>
+                  <div class="slide-stat-pill">
+                    <strong>24/7</strong>
+                    <span>Basecamp Desk Support</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="slide-card theme-alpine">
+                <div class="slide-copy">
+                  <span class="slide-tag">Informative Slide 03 &bull; Access &amp; Transfers</span>
+                  <h2>Know Your Road Type: Paved KKH vs. 4x4 Jeep</h2>
+                  <p>
+                    Karimabad, Skardu, and Kalam lodges are sedan-accessible along paved highways.
+                    High-elevation pine valleys like Naltar and steep ridges like Duikar may require
+                    local 4x4 jeeps after snowfall.
+                  </p>
+                </div>
+                <div class="slide-stats">
+                  <div class="slide-stat-pill">
+                    <strong>Sedan OK</strong>
+                    <span>Hunza &bull; Skardu &bull; Kalam</span>
+                  </div>
+                  <div class="slide-stat-pill">
+                    <strong>4x4 Jeep</strong>
+                    <span>Naltar Bala &bull; Winter Duikar</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            class="carousel-control-prev info-carousel-control"
+            type="button"
+            data-bs-target="#stays-info-carousel"
+            data-bs-slide="prev"
+            aria-label="Previous informative slide"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </button>
+          <button
+            class="carousel-control-next info-carousel-control"
+            type="button"
+            data-bs-target="#stays-info-carousel"
+            data-bs-slide="next"
+            aria-label="Next informative slide"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dynamic Hotel Cards Catalog -->
+    <section id="stays-catalog" class="section-pad">
+      <div class="container">
+        <div class="catalog-header">
+          <div>
+            <h2 class="section-title">Featured Northern Hotels &amp; Stays</h2>
+            <p id="results-meta" class="section-desc" aria-live="polite">
+              Showing 6 stays across Northern Pakistan
+            </p>
+          </div>
+
+          <div class="catalog-controls">
+            <label for="sort-stays" class="visually-hidden">Sort stays</label>
+            <select id="sort-stays" class="form-select sort-select" aria-label="Sort stays">
+              <option value="recommended">Sort: Recommended</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="rating-desc">Highest Rated</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Quick Destination Pills -->
+        <div class="quick-pills" role="group" aria-label="Quick destination filter">
+          <button type="button" class="pill-btn active" data-dest="all">All Stays</button>
+          <button type="button" class="pill-btn" data-dest="hunza">Hunza</button>
+          <button type="button" class="pill-btn" data-dest="naltar">Naltar</button>
+          <button type="button" class="pill-btn" data-dest="duikar">Duikar</button>
+          <button type="button" class="pill-btn" data-dest="skardu">Skardu</button>
+          <button type="button" class="pill-btn" data-dest="kalam">Kalam</button>
+          <button type="button" class="pill-btn" data-dest="naran">Naran</button>
+        </div>
+
+        <!-- Dynamically Populated Grid -->
+        <div id="hotels-grid" class="row g-4" aria-live="polite"></div>
+
+        <!-- Empty State -->
+        <div id="empty-stays-state" class="empty-state" hidden>
+          <h3>No stays match your current filters</h3>
+          <p>
+            Try adjusting your guest count or switching destination to see all verified mountain
+            hotels.
+          </p>
+          <button type="button" id="empty-reset-btn" class="btn-green">Show All Stays</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Saved Trips / Stays Modal -->
+  <div
+    id="saved-trips-modal"
+    class="modal-backdrop"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="saved-modal-title"
+  >
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="saved-modal-title">Your Saved Stays</h3>
+        <button
+          type="button"
+          id="close-saved-modal"
+          class="modal-close-btn"
+          aria-label="Close modal"
+        >
+          &times;
+        </button>
+      </div>
+      <div id="saved-trips-list"></div>
+    </div>
+  </div>
+
+  <!-- Dark Navy Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">NorthPeak <span>Tours</span></div>
+          <p class="footer-text">
+            Responsible mountain tourism across Gilgit-Baltistan and Khyber Pakhtunkhwa. Built with
+            a clean Blue, White &amp; Green design system.
+          </p>
+          <p class="footer-text"><a href="mailto:i263022@nu.pk">i263022@nu.pk</a></p>
+          <p class="footer-text"><a href="mailto:i263037@nu.pk">i263037@nu.pk</a></p>
+          <p class="footer-text"><a href="mailto:i263023@isb.edu.pk">i263023@isb.edu.pk</a></p>
+          <p class="footer-text"><a href="mailto:i263034@isb.edu.pk">i263034@isb.edu.pk</a></p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home Overview</a></li>
+            <li><a href="destination.html">Featured Destinations</a></li>
+            <li><a href="tour.html">Tour Details &amp; Itinerary</a></li>
+            <li><a href="stays.html">Northern Valley Stays</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-contact">
+          <h4>Northern Helpline</h4>
+          <p>Gilgit &amp; Skardu Basecamp Desk: <strong>+92 5811 450920</strong></p>
+          <p>Email: <a href="mailto:safety@northpeaktours.pk">safety@northpeaktours.pk</a></p>
+          <p class="social-links-row">
+            Follow us:
+            <a href="#facebook" aria-label="NorthPeak Tours on Facebook">FB</a> &middot;
+            <a href="#instagram" aria-label="NorthPeak Tours on Instagram">IG</a> &middot;
+            <a href="#x" aria-label="NorthPeak Tours on X">X</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 NorthPeak Tours &mdash; Academic Web Prototype &amp; Layout Inspiration.</p>
+        <div class="ai-disclosure">
+          Custom SVG graphics used; curated northern valley photography displayed for stay listings.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+  <script src="stays.js"></script>
+</body>
+</html>
