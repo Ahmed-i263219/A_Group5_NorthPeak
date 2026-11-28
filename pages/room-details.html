@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Room Details | NorthPeak Tours - Mountain Lodges in Northern Pakistan</title>
+  <meta name="description" content="View room specifications, alpine suites, winter access details, and live pricing breakdown for your stay in Northern Pakistan." />
+
+  <!-- Google Fonts: Inter and Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+  <!-- Base & Room Details Stylesheets -->
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/room-details.css" />
+</head>
+<body>
+
+  <!-- ======================================================================
+       SHARED HEADER (Sticks to top, identical across pages)
+       ====================================================================== -->
+  <header class="np-header">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg p-0" aria-label="Main Navigation">
+        <!-- Brand Logo & Name -->
+        <a class="np-brand" href="stays.html">
+          <img src="../images/logo.svg" alt="NorthPeak Tours Logo" width="44" height="44" />
+          <span class="np-brand-text">NorthPeak <span class="np-brand-accent">Tours</span></span>
+        </a>
+
+        <!-- Mobile Toggle (Phone collapse) -->
+        <button class="navbar-toggler np-menu-btn d-lg-none ms-auto me-2" type="button" data-bs-toggle="collapse" data-bs-target="#npNavbar" aria-controls="npNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+        </button>
+
+        <!-- Saved Stays Button (Available on all screens) -->
+        <button type="button" class="np-nav-saved-btn order-lg-last" data-bs-toggle="modal" data-bs-target="#savedStaysModal" aria-label="View Saved Stays">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+          <span>Saved</span>
+          <span class="np-saved-count">0</span>
+        </button>
+
+        <!-- Navigation Links -->
+        <div class="collapse navbar-collapse" id="npNavbar">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-1 pt-2 pt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link np-nav-link" href="stays.html">Stays Directory</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link np-nav-link active" aria-current="page" href="room-details.html">Room Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link np-nav-link" href="stay-reservation.html">Stay Reservation</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================================================================
+         HERO SECTION: Hotel Name, Location, Rating, Back Link, and Heart Button
+         ====================================================================== -->
+    <section class="np-room-hero" aria-labelledby="heroHotelName">
+      <div class="container position-relative" style="z-index: 2;">
+        
+        <!-- Back to Stays Link -->
+        <a id="backToStaysLink" href="stays.html" class="np-back-link">
+          ← Back to Stays Directory
+        </a>
+
+        <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-1">
+          <div>
+            <!-- Single H1 Title for the Page -->
+            <h1 id="heroHotelName" class="np-room-hero-title">
+              Loading Lodge...
+            </h1>
+            <div class="np-room-hero-meta">
+              <span id="heroLocation">📍 Loading location...</span>
+              <span id="heroRatingChip" class="np-rating-chip">★ 4.9</span>
+            </div>
+          </div>
+
+          <!-- Save / Heart Button for Hotel -->
+          <button type="button" id="heroHeartBtn" class="np-hero-heart-btn" aria-label="Save this stay to favorites" aria-pressed="false">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            <span id="heroHeartLabel">Save this Stay</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Mountain Silhouette Divider -->
+      <div class="np-hero-silhouette" aria-hidden="true">
+        <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
+          <polygon points="0,90 0,45 120,20 280,62 430,15 620,70 780,25 940,68 1120,18 1280,60 1440,30 1440,90" fill="#064e3b" opacity="0.9" />
+          <polygon points="0,90 0,60 180,30 340,75 510,35 680,80 860,32 1030,78 1220,38 1360,70 1440,50 1440,90" fill="#09192b" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         MAIN CONTENT: Overview + Room Choices on Left, Sticky Booking on Right
+         ====================================================================== -->
+    <section class="container np-details-main-section" aria-label="Lodge Overview and Room Selection">
+      <div class="row g-4">
+        
+        <!-- LEFT COLUMN (col-lg-8): Overview Section & Choose Your Room -->
+        <div class="col-lg-8">
+          
+          <!-- 1. Overview Section Card -->
+          <article class="np-overview-card" aria-label="Lodge Overview">
+            <div class="np-overview-photo-wrap">
+              <img id="hotelPhoto" src="../images/karimabad-heritage-lodge.jpg" alt="Hotel exterior" class="np-overview-photo" />
+            </div>
+
+            <div class="np-overview-content">
+              <h2 class="np-section-heading">
+                <span>About the Property</span>
+              </h2>
+              <p id="hotelDescription" class="np-overview-desc">
+                Loading property description...
+              </p>
+
+              <!-- Times & Key Specs Grid -->
+              <div class="np-specs-grid">
+                <div class="np-spec-box">
+                  <div class="np-spec-label">Check-in Time</div>
+                  <div id="checkinTime" class="np-spec-val">14:00</div>
+                </div>
+                <div class="np-spec-box">
+                  <div class="np-spec-label">Check-out Time</div>
+                  <div id="checkoutTime" class="np-spec-val">11:30</div>
+                </div>
+                <div class="np-spec-box">
+                  <div class="np-spec-label">Altitude</div>
+                  <div id="altitude" class="np-spec-val">2,438m</div>
+                </div>
+                <div class="np-spec-box">
+                  <div class="np-spec-label">Max Property Guests</div>
+                  <div id="maxGuests" class="np-spec-val">Up to 6 Guests</div>
+                </div>
+              </div>
+
+              <!-- Amenities -->
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--np-navy-deep); margin-bottom: 0.85rem;">
+                Property Amenities & Comforts
+              </h3>
+              <div id="amenitiesList" class="np-amenities-grid">
+                <!-- Injected by JS -->
+              </div>
+
+              <!-- Access Note & Winter Advisory -->
+              <div id="accessBox" class="np-access-box">
+                <!-- Injected by JS with amber warning when applicable -->
+              </div>
+
+              <!-- Cancellation Policy -->
+              <div class="np-policy-box">
+                <strong>Cancellation Policy:</strong> <span id="cancellationPolicy">Loading policy...</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. "Choose your room" Section -->
+          <section class="np-rooms-section" aria-label="Available Room Types">
+            <h2 class="np-section-heading">
+              <span>Choose Your Room</span>
+            </h2>
+            <p class="text-muted mb-4" style="font-size: 0.95rem;">
+              Select a room tier below. Your selection directly updates the live booking summary and price estimate on the right.
+            </p>
+
+            <div id="roomCardsList" class="np-room-cards-list">
+              <!-- Dynamically populated room cards -->
+            </div>
+          </section>
+
+        </div>
+
+        <!-- RIGHT COLUMN (col-lg-4): Sticky Booking Panel -->
+        <aside class="col-lg-4" aria-label="Booking Summary Panel">
+          <div class="np-sticky-booking-card">
+            
+            <h2 class="np-booking-panel-title">Your Mountain Stay</h2>
+            <p class="np-booking-panel-subtitle">Review dates, selected room, and live itemised pricing.</p>
+
+            <!-- Inputs inside booking card -->
+            <div class="np-booking-fields">
+              
+              <!-- Check-in -->
+              <div class="np-field-group">
+                <label for="bookCheckin" class="np-field-label">Check-in Date</label>
+                <input type="date" id="bookCheckin" class="np-input" required />
+              </div>
+
+              <!-- Check-out -->
+              <div class="np-field-group">
+                <label for="bookCheckout" class="np-field-label">Check-out Date</label>
+                <input type="date" id="bookCheckout" class="np-input" required />
+              </div>
+
+              <!-- Guests -->
+              <div class="np-field-group">
+                <label for="bookGuests" class="np-field-label">Guests Count</label>
+                <select id="bookGuests" class="np-select">
+                  <option value="1">1 Guest</option>
+                  <option value="2">2 Guests</option>
+                  <option value="3">3 Guests</option>
+                  <option value="4">4 Guests</option>
+                  <option value="5">5 Guests</option>
+                  <option value="6">6 Guests</option>
+                </select>
+              </div>
+
+            </div>
+
+            <!-- Selected Room Summary Pill -->
+            <div class="np-selected-room-pill">
+              <div class="np-selected-room-label">Selected Room Tier</div>
+              <div id="selectedRoomName" class="np-selected-room-name">Standard Heritage Room</div>
+              <div id="selectedRoomRate" class="np-selected-room-rate">Rs. 18,000 / night</div>
+            </div>
+
+            <!-- Live Price Breakdown -->
+            <div class="np-price-summary-box">
+              <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--np-text-muted); margin-bottom: 0.85rem;">
+                Itemised Cost Breakdown
+              </div>
+
+              <!-- Nights & Room Subtotal -->
+              <div class="np-price-row">
+                <span>Room Subtotal (<span id="priceNights">2 nights</span>)</span>
+                <span id="priceRoomSubtotal" class="fw-bold">Rs. 36,000</span>
+              </div>
+
+              <!-- Season Surcharge (conditional) -->
+              <div id="seasonRow" class="np-price-row surcharge d-none">
+                <span id="seasonLabel">Season Surcharge</span>
+                <span id="seasonCost">+ Rs. 0</span>
+              </div>
+
+              <!-- Long-stay Discount (conditional) -->
+              <div id="discountRow" class="np-price-row discount d-none">
+                <span id="discountLabel">Long Stay Discount</span>
+                <span id="discountAmount">- Rs. 0</span>
+              </div>
+
+              <!-- Tax & Tourism Levy -->
+              <div class="np-price-row">
+                <span>Taxes & Tourism Levy (5%)</span>
+                <span id="priceTax">Rs. 1,800</span>
+              </div>
+
+              <hr class="np-price-divider" />
+
+              <!-- Grand Total -->
+              <div class="np-price-total-row">
+                <span class="np-grand-total-label">Grand Total</span>
+                <span id="grandTotal" class="np-grand-total-val">Rs. 37,800</span>
+              </div>
+            </div>
+
+            <!-- Proceed to Reservation CTA -->
+            <a id="proceedBtn" href="stay-reservation.html" class="np-btn np-btn-primary np-proceed-btn">
+              Proceed to Reservation →
+            </a>
+            <div class="text-center mt-2" style="font-size: 0.78rem; color: var(--np-text-muted);">
+              Instant booking confirmation • Direct payment options
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+    </section>
+  </main>
+
+
+  <!-- ======================================================================
+       SAVED STAYS MODAL (Identical across pages)
+       ====================================================================== -->
+  <div class="modal fade np-modal" id="savedStaysModal" tabindex="-1" aria-labelledby="savedStaysModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="savedStaysModalLabel">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#059669">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            Saved Stays (<span class="np-saved-count">0</span>)
+          </h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close modal"></button>
+        </div>
+        <div class="modal-body">
+          <div id="savedListContainer">
+            <!-- Populated dynamically by shared hotels-data.js helper -->
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" id="clearSavedBtn" class="np-btn np-btn-danger np-btn-sm">
+            Clear All Saved
+          </button>
+          <button type="button" class="np-btn np-btn-secondary np-btn-sm" data-bs-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ======================================================================
+       SHARED FOOTER (Dark navy, 3 columns, identical across pages)
+       ====================================================================== -->
+  <footer class="np-footer">
+    <div class="container">
+      <div class="row g-4">
+        
+        <!-- Column 1: Brand & Description -->
+        <div class="col-lg-4 col-md-6">
+          <div class="np-footer-brand">
+            NorthPeak <span>Tours</span>
+          </div>
+          <p class="np-footer-desc">
+            Curated authentic mountain stays and eco-expeditions across the Karakoram, Western Himalayas, and Hindukush valleys of Pakistan.
+          </p>
+          <p class="mb-1" style="font-size: 0.9rem;">
+            <strong>Inquiries:</strong> <a href="mailto:info@northpeaktours.pk" class="text-decoration-underline" style="color: #cbd5e1;">info@northpeaktours.pk</a>
+          </p>
+          <p class="mb-0" style="font-size: 0.9rem;">
+            <strong>Reservations:</strong> <a href="mailto:bookings@northpeaktours.pk" class="text-decoration-underline" style="color: #cbd5e1;">bookings@northpeaktours.pk</a>
+          </p>
+        </div>
+
+        <!-- Column 2: Quick Navigation -->
+        <div class="col-lg-3 col-md-6 ps-lg-4">
+          <h3 class="np-footer-heading">Quick Navigation</h3>
+          <ul class="np-footer-links">
+            <li><a href="stays.html">Stays Directory</a></li>
+            <li><a href="room-details.html">Room Details</a></li>
+            <li><a href="stay-reservation.html">Stay Reservation</a></li>
+            <li><a href="stays.html?destination=hunza">Hunza Lodges</a></li>
+            <li><a href="stays.html?destination=skardu">Skardu Lakeside Retreats</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Northern Helpline -->
+        <div class="col-lg-5 col-md-12">
+          <h3 class="np-footer-heading">Northern Helpline</h3>
+          <div class="np-helpline-box">
+            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: #94a3b8;">
+              Gilgit & Skardu Basecamp Desk
+            </div>
+            <div class="np-helpline-num">
+              +92 5811 450920
+            </div>
+            <div style="font-size: 0.85rem; color: #cbd5e1; margin-top: 0.25rem;">
+              Safety & Emergency: <a href="mailto:safety@northpeaktours.pk" style="color: #6ee7b7;">safety@northpeaktours.pk</a>
+            </div>
+          </div>
+          <div class="d-flex align-items-center gap-3">
+            <span style="font-size: 0.88rem; color: #cbd5e1;">Connect With Us:</span>
+            <div class="np-social-links m-0">
+              <a href="https://facebook.com" class="np-social-btn" aria-label="Visit NorthPeak Tours Facebook" target="_blank" rel="noopener noreferrer">FB</a>
+              <a href="https://instagram.com" class="np-social-btn" aria-label="Visit NorthPeak Tours Instagram" target="_blank" rel="noopener noreferrer">IG</a>
+              <a href="https://x.com" class="np-social-btn" aria-label="Visit NorthPeak Tours X" target="_blank" rel="noopener noreferrer">X</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="np-footer-divider" />
+
+      <!-- Copyright Line -->
+      <div class="np-footer-copy">
+        &copy; 2026 NorthPeak Tours. All rights reserved. Built for Northern Pakistan mountain hospitality.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- Application Scripts -->
+  <script src="../js/hotels-data.js"></script>
+  <script src="../js/room-details.js"></script>
+</body>
+</html>

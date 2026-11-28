@@ -507,6 +507,115 @@ function calculateStayTotal(hotel, room, checkin, checkout, guests = 2, extras =
   };
 }
 
+// ==========================================================================
+// Shared Saved Stays (Favorites) Manager across all pages
+// ==========================================================================
+const SAVED_STORAGE_KEY = "northpeak_saved_stays_v1";
+
+function getSavedStayIds() {
+  try {
+    const data = localStorage.getItem(SAVED_STORAGE_KEY);
+    return data ? JSON.parse(data) : [];
+  } catch (err) {
+    console.warn("Could not read saved stays from localStorage:", err);
+    return [];
+  }
+}
+
+function setSavedStayIds(ids) {
+  try {
+    localStorage.setItem(SAVED_STORAGE_KEY, JSON.stringify(ids));
+    updateSharedSavedUI();
+  } catch (err) {
+    console.warn("Could not write saved stays to localStorage:", err);
+  }
+}
+
+function toggleSavedStayId(id) {
+  const ids = getSavedStayIds();
+  const index = ids.indexOf(id);
+  if (index > -1) {
+    ids.splice(index, 1);
+  } else {
+    ids.push(id);
+  }
+  setSavedStayIds(ids);
+  return ids.includes(id);
+}
+
+function updateSharedSavedUI() {
+  const savedIds = getSavedStayIds();
+  const badges = document.querySelectorAll(".np-saved-count");
+  badges.forEach((b) => {
+    b.textContent = savedIds.length;
+  });
+
+  const savedListContainer = document.getElementById("savedListContainer");
+  if (savedListContainer) {
+    if (savedIds.length === 0) {
+      savedListContainer.innerHTML = `
+        <div class="text-center py-4 text-muted">
+          <p class="mb-1">You have no saved stays yet.</p>
+          <small>Click the heart icon on any stay card or detail page to save it for quick reference.</small>
+        </div>
+      `;
+    } else {
+      const savedHotels = HOTELS.filter((h) => savedIds.includes(h.id));
+      savedListContainer.innerHTML = savedHotels
+        .map(
+          (h) => `
+          <div class="np-saved-item">
+            <img src="../images/${h.image}" alt="${h.name}" class="np-saved-thumb" />
+            <div class="np-saved-info">
+              <div class="np-saved-name">${h.name}</div>
+              <div class="np-saved-meta">${h.destinationLabel} • ${formatPKR(h.pricePerNight)}/night</div>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <a href="room-details.html?id=${encodeURIComponent(h.id)}" class="np-btn np-btn-primary np-btn-sm">
+                View
+              </a>
+              <button type="button" class="np-btn np-btn-danger np-btn-sm remove-saved-btn" data-id="${h.id}" title="Remove stay" aria-label="Remove ${h.name} from saved">
+                ✕
+              </button>
+            </div>
+          </div>
+        `
+        )
+        .join("");
+
+      savedListContainer.querySelectorAll(".remove-saved-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const id = e.currentTarget.dataset.id;
+          toggleSavedStayId(id);
+          // If page has a custom onSavedChange callback (e.g. to sync heart button on stays or room-details page)
+          if (typeof window.onSavedStaysChanged === "function") {
+            window.onSavedStaysChanged(id);
+          }
+        });
+      });
+    }
+  }
+
+  // Clear button inside modal
+  const clearBtn = document.getElementById("clearSavedBtn");
+  if (clearBtn && !clearBtn.dataset.bound) {
+    clearBtn.dataset.bound = "true";
+    clearBtn.addEventListener("click", () => {
+      setSavedStayIds([]);
+      if (typeof window.onSavedStaysChanged === "function") {
+        window.onSavedStaysChanged(null);
+      }
+    });
+  }
+}
+
+// Auto init on load
+if (typeof document !== "undefined") {
+  document.addEventListener("DOMContentLoaded", () => {
+    updateSharedSavedUI();
+  });
+}
+
 // Make accessible in both browser window and potential node unit testing environments
 if (typeof window !== "undefined") {
   window.HOTELS = HOTELS;
@@ -514,6 +623,10 @@ if (typeof window !== "undefined") {
   window.isWinterDate = isWinterDate;
   window.calculateNights = calculateNights;
   window.calculateStayTotal = calculateStayTotal;
+  window.getSavedStayIds = getSavedStayIds;
+  window.setSavedStayIds = setSavedStayIds;
+  window.toggleSavedStayId = toggleSavedStayId;
+  window.updateSharedSavedUI = updateSharedSavedUI;
 }
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {
@@ -521,6 +634,10 @@ if (typeof module !== "undefined" && module.exports) {
     formatPKR,
     isWinterDate,
     calculateNights,
-    calculateStayTotal
+    calculateStayTotal,
+    getSavedStayIds,
+    setSavedStayIds,
+    toggleSavedStayId,
+    updateSharedSavedUI
   };
 }

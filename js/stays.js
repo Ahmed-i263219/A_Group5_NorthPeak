@@ -174,96 +174,18 @@ document.addEventListener("DOMContentLoaded", () => {
     render();
   });
 
-  // 4. Saved Stays (localStorage)
-  function getSavedStays() {
-    try {
-      const data = localStorage.getItem(STORAGE_KEY);
-      return data ? JSON.parse(data) : [];
-    } catch (err) {
-      console.warn("Could not read localStorage:", err);
-      return [];
-    }
-  }
-
-  function setSavedStays(ids) {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(ids));
-      updateSavedBadge();
-      updateSavedModalContent();
-    } catch (err) {
-      console.warn("Could not write to localStorage:", err);
-    }
-  }
+  // 4. Saved Stays - delegating to shared helper in hotels-data.js
+  window.onSavedStaysChanged = () => {
+    render();
+  };
 
   function toggleSaveStay(id) {
-    const saved = getSavedStays();
-    const index = saved.indexOf(id);
-    if (index > -1) {
-      saved.splice(index, 1);
-    } else {
-      saved.push(id);
-    }
-    setSavedStays(saved);
+    window.toggleSavedStayId(id);
+    render();
   }
 
-  function updateSavedBadge() {
-    const count = getSavedStays().length;
-    savedCountBadges.forEach((b) => {
-      b.textContent = count;
-    });
-  }
-
-  function updateSavedModalContent() {
-    if (!savedListContainer) return;
-    const savedIds = getSavedStays();
-    if (savedIds.length === 0) {
-      savedListContainer.innerHTML = `
-        <div class="text-center py-4 text-muted">
-          <p class="mb-1">You have no saved stays yet.</p>
-          <small>Click the heart icon on any stay card to save it for quick reference.</small>
-        </div>
-      `;
-      return;
-    }
-
-    const savedHotels = window.HOTELS.filter((h) => savedIds.includes(h.id));
-    savedListContainer.innerHTML = savedHotels
-      .map(
-        (h) => `
-        <div class="np-saved-item">
-          <img src="../images/${h.image}" alt="${h.name}" class="np-saved-thumb" />
-          <div class="np-saved-info">
-            <div class="np-saved-name">${h.name}</div>
-            <div class="np-saved-meta">${h.destinationLabel} • ${window.formatPKR(h.pricePerNight)}/night</div>
-          </div>
-          <div class="d-flex align-items-center gap-2">
-            <a href="room-details.html?id=${encodeURIComponent(h.id)}&checkin=${encodeURIComponent(currentFilters.checkin)}&checkout=${encodeURIComponent(currentFilters.checkout)}&guests=${currentFilters.guests}" class="np-btn np-btn-primary np-btn-sm">
-              View
-            </a>
-            <button type="button" class="np-btn np-btn-danger np-btn-sm remove-saved-btn" data-id="${h.id}" title="Remove stay">
-              ✕
-            </button>
-          </div>
-        </div>
-      `
-      )
-      .join("");
-
-    // Wire remove buttons inside modal
-    savedListContainer.querySelectorAll(".remove-saved-btn").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        const id = e.currentTarget.dataset.id;
-        toggleSaveStay(id);
-        render(); // update card heart icons
-      });
-    });
-  }
-
-  if (clearSavedBtn) {
-    clearSavedBtn.addEventListener("click", () => {
-      setSavedStays([]);
-      render();
-    });
+  function getSavedStays() {
+    return window.getSavedStayIds ? window.getSavedStayIds() : [];
   }
 
   // 5. Main Filter, Calculate & Render
