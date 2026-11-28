@@ -5,13 +5,13 @@
 (function () {
   "use strict";
 
-  const STORAGE_KEYS = {
+       const STORAGE_KEYS = {
     SAVED_TRIPS: "northpeak_saved_trips",
     SEARCH_PREFS: "northpeak_search_prefs",
-  };
+  };   
   const DESTINATIONS = [
     { id: "hunza", name: "Hunza & Khunjerab Pass", days: 7, price: 68500 },
-    { id: "skardu", name: "Skardu & Deosai Plains", days: 6, price: 64000 },
+        { id: "skardu", name: "Skardu & Deosai Plains", days: 6, price: 64000 },
     { id: "fairy-meadows", name: "Fairy Meadows & Nanga Parbat", days: 5, price: 52000 },
     { id: "swat", name: "Swat, Kalam & Mahodand Lake", days: 4, price: 34500 },
     { id: "naran", name: "Naran & Saif-ul-Malook", days: 3, price: 27000 },
