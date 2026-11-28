@@ -1,0 +1,1104 @@
+/* ==========================================================================
+   css/base.css
+   Shared Foundation Styles for NorthPeak Tours
+   Color Palette: Deep Navy, Mid Blue, Emerald Green, Dark Forest Green
+   Light grey background, rounded corners (14px), white cards, Inter & Plus Jakarta Sans
+   ========================================================================== */
+
+/* 1. Design Tokens & CSS Variables */
+:root {
+  /* Brand Palette */
+  --np-navy-deep: #09192b;
+  --np-navy: #0f2238;
+  --np-navy-light: #183353;
+  --np-blue-mid: #2563eb;
+  --np-blue-hover: #1d4ed8;
+  --np-blue-pale: #e0edff;
+  --np-blue-soft: #f0f7ff;
+  
+  --np-green-emerald: #059669;
+  --np-green-hover: #047857;
+  --np-green-forest: #064e3b;
+  --np-green-dark: #022c22;
+  --np-green-pale: #ecfdf5;
+  --np-green-border: #a7f3d0;
+
+  /* Neutrals & Surfaces */
+  --np-bg-page: #f8fafc;
+  --np-surface-white: #ffffff;
+  --np-border-light: #e2e8f0;
+  --np-border-subtle: #cbd5e1;
+  --np-text-primary: #0f172a;
+  --np-text-secondary: #475569;
+  --np-text-muted: #64748b;
+  --np-text-light: #f8fafc;
+
+  /* Semantic Alerts */
+  --np-amber: #d97706;
+  --np-amber-bg: #fffbeb;
+  --np-amber-border: #fcd34d;
+  --np-red: #dc2626;
+  --np-red-bg: #fef2f2;
+  --np-red-border: #fecaca;
+
+  /* Typography */
+  --np-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --np-font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Shape & Elevation */
+  --np-radius-sm: 8px;
+  --np-radius: 14px;
+  --np-radius-lg: 20px;
+  --np-radius-pill: 9999px;
+
+  --np-shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --np-shadow-md: 0 4px 14px rgba(15, 34, 56, 0.08);
+  --np-shadow-lg: 0 10px 25px -5px rgba(15, 34, 56, 0.12), 0 8px 10px -6px rgba(15, 34, 56, 0.08);
+  --np-shadow-hover: 0 14px 30px rgba(15, 34, 56, 0.15);
+
+  --np-transition: all 0.25s ease-in-out;
+}
+
+/* 2. Global Resets & Base Typography */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--np-font-body);
+  background-color: var(--np-bg-page);
+  color: var(--np-text-primary);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--np-font-heading);
+  color: var(--np-navy-deep);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 0;
+}
+
+a {
+  color: var(--np-blue-mid);
+  text-decoration: none;
+  transition: var(--np-transition);
+}
+
+a:hover {
+  color: var(--np-blue-hover);
+  text-decoration: none;
+}
+
+/* Accessible visible focus states */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--np-blue-mid);
+  outline-offset: 2px;
+}
+
+/* 3. Sticky Navigation Header */
+.np-header {
+  position: sticky;
+  top: 0;
+  z-index: 1040;
+  background-color: var(--np-surface-white);
+  border-bottom: 1px solid var(--np-border-light);
+  box-shadow: var(--np-shadow-sm);
+  padding: 0.65rem 0;
+}
+
+.np-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--np-font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--np-navy-deep);
+  text-decoration: none;
+}
+
+.np-brand:hover {
+  color: var(--np-navy);
+}
+
+.np-brand img {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--np-radius-sm);
+  object-fit: cover;
+}
+
+.np-brand-text {
+  letter-spacing: -0.02em;
+}
+
+.np-brand-accent {
+  color: var(--np-green-emerald);
+}
+
+.np-nav-link {
+  font-family: var(--np-font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--np-text-secondary);
+  padding: 0.5rem 1rem !important;
+  border-radius: var(--np-radius-pill);
+  transition: var(--np-transition);
+}
+
+.np-nav-link:hover {
+  color: var(--np-blue-mid);
+  background-color: var(--np-blue-soft);
+}
+
+.np-nav-link.active {
+  color: var(--np-blue-mid) !important;
+  background-color: var(--np-blue-pale) !important;
+}
+
+.np-nav-saved-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--np-green-pale);
+  color: var(--np-green-forest);
+  border: 1px solid var(--np-green-border);
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--np-radius-pill);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--np-transition);
+}
+
+.np-nav-saved-btn:hover {
+  background-color: var(--np-green-emerald);
+  color: #ffffff;
+  border-color: var(--np-green-emerald);
+}
+
+.np-saved-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--np-green-forest);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: var(--np-radius-pill);
+}
+
+.np-nav-saved-btn:hover .np-saved-count {
+  background-color: #ffffff;
+  color: var(--np-green-forest);
+}
+
+/* Custom hamburger toggle for mobile */
+.np-menu-btn {
+  font-family: var(--np-font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--np-radius-sm);
+  border: 1px solid var(--np-border-subtle);
+  background-color: var(--np-surface-white);
+  color: var(--np-navy);
+}
+
+.np-menu-btn:hover {
+  background-color: var(--np-blue-soft);
+}
+
+/* 4. Hero Section */
+.np-hero {
+  position: relative;
+  background: linear-gradient(135deg, var(--np-navy-deep) 0%, var(--np-navy) 40%, var(--np-green-forest) 85%, var(--np-green-emerald) 100%);
+  color: var(--np-text-light);
+  padding: 4rem 0 7rem;
+  overflow: hidden;
+}
+
+.np-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--np-radius-pill);
+  margin-bottom: 1.25rem;
+}
+
+.np-hero-title {
+  color: #ffffff;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.np-hero-subtitle {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+}
+
+/* Jagged Mountain Silhouette (overlapping dual SVG polygons) */
+.np-hero-silhouette {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.np-hero-silhouette svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* 5. Search Card */
+.np-search-card {
+  position: relative;
+  z-index: 2;
+  background-color: var(--np-surface-white);
+  border: 1px solid var(--np-border-light);
+  border-radius: var(--np-radius);
+  box-shadow: var(--np-shadow-lg);
+  padding: 1.5rem 1.75rem;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.np-field-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.np-field-label {
+  font-family: var(--np-font-heading);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--np-text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.np-input,
+.np-select {
+  width: 100%;
+  font-family: var(--np-font-body);
+  font-size: 0.95rem;
+  color: var(--np-text-primary);
+  background-color: #ffffff;
+  border: 1.5px solid var(--np-border-light);
+  border-radius: var(--np-radius-sm);
+  padding: 0.65rem 0.85rem;
+  transition: var(--np-transition);
+}
+
+.np-input:hover,
+.np-select:hover {
+  border-color: var(--np-border-subtle);
+}
+
+.np-input:focus,
+.np-select:focus {
+  border-color: var(--np-blue-mid);
+  box-shadow: 0 0 0 3px var(--np-blue-pale);
+}
+
+/* 6. Buttons */
+.np-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--np-font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.68rem 1.35rem;
+  border-radius: var(--np-radius-sm);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: var(--np-transition);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.np-btn-primary {
+  background-color: var(--np-green-emerald);
+  color: #ffffff;
+}
+
+.np-btn-primary:hover {
+  background-color: var(--np-green-hover);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+}
+
+.np-btn-navy {
+  background-color: var(--np-navy);
+  color: #ffffff;
+}
+
+.np-btn-navy:hover {
+  background-color: var(--np-navy-deep);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(15, 34, 56, 0.3);
+}
+
+.np-btn-outline-navy {
+  background-color: transparent;
+  color: var(--np-navy);
+  border-color: var(--np-navy);
+}
+
+.np-btn-outline-navy:hover {
+  background-color: var(--np-navy);
+  color: #ffffff;
+}
+
+.np-btn-secondary {
+  background-color: #f1f5f9;
+  color: var(--np-text-secondary);
+  border-color: var(--np-border-light);
+}
+
+.np-btn-secondary:hover {
+  background-color: #e2e8f0;
+  color: var(--np-text-primary);
+}
+
+.np-btn-danger {
+  background-color: var(--np-red-bg);
+  color: var(--np-red);
+  border-color: var(--np-red-border);
+}
+
+.np-btn-danger:hover {
+  background-color: var(--np-red);
+  color: #ffffff;
+}
+
+.np-btn-sm {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.85rem;
+}
+
+/* 7. Advisory Carousel (Overlaps Hero slightly) */
+.np-carousel-section {
+  position: relative;
+  z-index: 3;
+  margin-top: -3.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.np-carousel-inner {
+  border-radius: var(--np-radius);
+  overflow: hidden;
+  box-shadow: var(--np-shadow-lg);
+  border: 1px solid var(--np-border-light);
+}
+
+.np-slide {
+  padding: 3rem 3.5rem;
+  color: #ffffff;
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.np-slide-navy {
+  background: linear-gradient(135deg, var(--np-navy-deep) 0%, var(--np-navy) 60%, var(--np-navy-light) 100%);
+}
+
+.np-slide-green {
+  background: linear-gradient(135deg, var(--np-green-dark) 0%, var(--np-green-forest) 50%, var(--np-green-emerald) 100%);
+}
+
+.np-slide-mixed {
+  background: linear-gradient(135deg, var(--np-navy-deep) 0%, #0d3846 50%, var(--np-green-forest) 100%);
+}
+
+.np-slide-tag {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--np-radius-pill);
+  margin-bottom: 0.75rem;
+  align-self: flex-start;
+}
+
+.np-slide-heading {
+  color: #ffffff;
+  font-size: 1.65rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.np-slide-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  max-width: 650px;
+  margin-bottom: 1.25rem;
+}
+
+/* Glassy Stat Boxes inside Carousel */
+.np-stat-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.np-glass-stat {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--np-radius-sm);
+  padding: 0.6rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.np-glass-stat-val {
+  font-family: var(--np-font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.np-glass-stat-lbl {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+
+.carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+}
+
+.carousel-indicators .active {
+  background-color: #ffffff;
+  width: 24px;
+  border-radius: var(--np-radius-pill);
+}
+
+/* 8. Filter Pills & Sorting Bar */
+.np-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--np-border-light);
+}
+
+.np-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.np-pill-btn {
+  font-family: var(--np-font-heading);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  border-radius: var(--np-radius-pill);
+  border: 1.5px solid var(--np-border-light);
+  background-color: var(--np-surface-white);
+  color: var(--np-text-secondary);
+  cursor: pointer;
+  transition: var(--np-transition);
+}
+
+.np-pill-btn:hover {
+  border-color: var(--np-navy);
+  color: var(--np-navy);
+}
+
+.np-pill-btn.active {
+  background-color: var(--np-navy);
+  border-color: var(--np-navy);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(15, 34, 56, 0.2);
+}
+
+.np-sort-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.np-sort-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--np-text-muted);
+  white-space: nowrap;
+}
+
+.np-results-count {
+  font-size: 0.9rem;
+  color: var(--np-text-muted);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+/* 9. Hotel Cards & Grid */
+.np-hotel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.75rem;
+  margin-bottom: 3.5rem;
+}
+
+.np-hotel-card {
+  background-color: var(--np-surface-white);
+  border: 1px solid var(--np-border-light);
+  border-radius: var(--np-radius);
+  overflow: hidden;
+  box-shadow: var(--np-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.np-hotel-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--np-shadow-hover);
+  border-color: var(--np-border-subtle);
+}
+
+.np-card-image-wrap {
+  position: relative;
+  height: 230px;
+  overflow: hidden;
+  background-color: var(--np-navy);
+}
+
+.np-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.np-hotel-card:hover .np-card-image {
+  transform: scale(1.06);
+}
+
+/* Dark pill badge in image corner */
+.np-card-corner-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(9, 25, 43, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-family: var(--np-font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--np-radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 2;
+}
+
+/* Round heart save button in opposite corner */
+.np-card-heart-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--np-text-muted);
+  box-shadow: var(--np-shadow-sm);
+  transition: var(--np-transition);
+  z-index: 2;
+}
+
+.np-card-heart-btn:hover {
+  background: #ffffff;
+  transform: scale(1.1);
+  color: var(--np-green-emerald);
+}
+
+.np-card-heart-btn.is-saved {
+  background: var(--np-green-emerald);
+  color: #ffffff;
+}
+
+.np-card-heart-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.np-card-body {
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.np-card-location-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.np-card-location {
+  font-size: 0.82rem;
+  color: var(--np-text-muted);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.np-rating-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background-color: #fef3c7;
+  color: #92400e;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--np-radius-pill);
+  white-space: nowrap;
+}
+
+.np-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.45rem;
+  color: var(--np-navy-deep);
+}
+
+.np-card-summary {
+  font-size: 0.9rem;
+  color: var(--np-text-secondary);
+  margin-bottom: 0.85rem;
+  line-height: 1.5;
+}
+
+/* Little grey tags */
+.np-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.95rem;
+}
+
+.np-tag {
+  background-color: #f1f5f9;
+  color: var(--np-text-secondary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--np-radius-sm);
+  border: 1px solid var(--np-border-light);
+}
+
+/* Green information box for access notes */
+.np-access-box {
+  background-color: var(--np-green-pale);
+  border: 1px solid var(--np-green-border);
+  border-radius: var(--np-radius-sm);
+  padding: 0.65rem 0.8rem;
+  margin-bottom: 1rem;
+  font-size: 0.82rem;
+  color: var(--np-green-forest);
+  line-height: 1.45;
+}
+
+.np-access-box strong {
+  color: var(--np-green-dark);
+}
+
+/* Amber winter warning state */
+.np-access-box.winter-closed {
+  background-color: var(--np-amber-bg);
+  border-color: var(--np-amber-border);
+  color: #92400e;
+}
+
+.np-access-box.winter-closed strong {
+  color: #78350f;
+}
+
+.np-card-footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--np-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.np-price-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.np-price-main {
+  font-family: var(--np-font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--np-navy-deep);
+  line-height: 1.1;
+}
+
+.np-price-sub {
+  font-size: 0.78rem;
+  color: var(--np-text-muted);
+}
+
+/* 10. Empty State */
+.np-empty-state {
+  background-color: var(--np-surface-white);
+  border: 2px dashed var(--np-border-subtle);
+  border-radius: var(--np-radius);
+  padding: 4rem 2rem;
+  text-align: center;
+  max-width: 650px;
+  margin: 2rem auto 4rem;
+}
+
+.np-empty-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.25rem;
+  color: var(--np-text-muted);
+}
+
+.np-empty-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--np-navy-deep);
+  margin-bottom: 0.5rem;
+}
+
+.np-empty-desc {
+  color: var(--np-text-secondary);
+  font-size: 0.95rem;
+  max-width: 440px;
+  margin: 0 auto 1.5rem;
+}
+
+/* 11. Modal (Saved Stays) */
+.np-modal .modal-content {
+  border-radius: var(--np-radius);
+  border: 1px solid var(--np-border-light);
+  box-shadow: var(--np-shadow-lg);
+  overflow: hidden;
+}
+
+.np-modal .modal-header {
+  background-color: var(--np-navy);
+  color: #ffffff;
+  border-bottom: 1px solid var(--np-navy-light);
+  padding: 1.15rem 1.5rem;
+}
+
+.np-modal .modal-title {
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.np-modal .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.np-saved-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--np-border-light);
+}
+
+.np-saved-item:last-child {
+  border-bottom: none;
+}
+
+.np-saved-thumb {
+  width: 68px;
+  height: 48px;
+  border-radius: var(--np-radius-sm);
+  object-fit: cover;
+}
+
+.np-saved-info {
+  flex-grow: 1;
+}
+
+.np-saved-name {
+  font-family: var(--np-font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--np-navy-deep);
+  margin-bottom: 0.15rem;
+}
+
+.np-saved-meta {
+  font-size: 0.8rem;
+  color: var(--np-text-muted);
+}
+
+/* 12. Footer */
+.np-footer {
+  background-color: var(--np-navy-deep);
+  color: #94a3b8;
+  padding: 4rem 0 2rem;
+  border-top: 1px solid var(--np-navy-light);
+}
+
+.np-footer-brand {
+  font-family: var(--np-font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.np-footer-brand span {
+  color: var(--np-green-emerald);
+}
+
+.np-footer-desc {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin-bottom: 1.15rem;
+  color: #cbd5e1;
+}
+
+.np-footer-heading {
+  font-family: var(--np-font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.15rem;
+}
+
+.np-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.np-footer-links li {
+  margin-bottom: 0.55rem;
+}
+
+.np-footer-links a {
+  color: #94a3b8;
+  font-size: 0.92rem;
+  transition: var(--np-transition);
+}
+
+.np-footer-links a:hover {
+  color: #ffffff;
+  padding-left: 4px;
+}
+
+.np-helpline-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--np-radius-sm);
+  padding: 0.85rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.np-helpline-num {
+  font-family: var(--np-font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 0.2rem;
+}
+
+.np-social-links {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.np-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--np-radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  transition: var(--np-transition);
+}
+
+.np-social-btn:hover {
+  background: var(--np-green-emerald);
+  color: #ffffff;
+}
+
+.np-footer-divider {
+  border-color: rgba(255, 255, 255, 0.12);
+  margin: 3rem 0 1.5rem;
+}
+
+.np-footer-copy {
+  font-size: 0.85rem;
+  color: #64748b;
+  text-align: center;
+}
+
+/* 13. Responsive Rules at 991px and 767px */
+@media (max-width: 991.98px) {
+  .np-search-card {
+    padding: 1.25rem;
+  }
+  
+  .np-search-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .np-search-actions {
+    grid-column: span 2;
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .np-slide {
+    padding: 2.25rem 2rem;
+  }
+
+  .np-controls-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .np-sort-wrapper {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .np-hero {
+    padding: 2.5rem 0 5.5rem;
+  }
+
+  .np-search-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .np-search-actions {
+    grid-column: span 1;
+    flex-direction: column;
+  }
+
+  .np-search-actions .np-btn {
+    width: 100%;
+  }
+
+  .np-carousel-section {
+    margin-top: -2.5rem;
+  }
+
+  .np-hotel-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .np-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .np-card-footer .np-btn {
+    width: 100%;
+  }
+
+  .np-pills-row {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.5rem;
+  }
+
+  .np-pill-btn {
+    white-space: nowrap;
+  }
+
+  .np-footer {
+    padding: 2.5rem 0 1.5rem;
+  }
+}

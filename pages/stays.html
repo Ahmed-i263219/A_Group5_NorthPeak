@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stays Directory | NorthPeak Tours - Mountain Lodges & Resorts in Northern Pakistan</title>
+  <meta name="description" content="Discover handpicked boutique mountain lodges, pine chalets, and alpine riverside retreats across Hunza, Skardu, Naltar, Kalam, and Naran." />
+
+  <!-- Google Fonts: Inter and Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+  <!-- Base & Stays Stylesheets -->
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/stays.css" />
+</head>
+<body>
+
+  <!-- ======================================================================
+       SHARED HEADER (Sticks to top, identical across pages)
+       ====================================================================== -->
+  <header class="np-header">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg p-0" aria-label="Main Navigation">
+        <!-- Brand Logo & Name -->
+        <a class="np-brand" href="stays.html">
+          <img src="../images/logo.svg" alt="NorthPeak Tours Logo" width="44" height="44" />
+          <span class="np-brand-text">NorthPeak <span class="np-brand-accent">Tours</span></span>
+        </a>
+
+        <!-- Mobile Toggle (Phone collapse) -->
+        <button class="navbar-toggler np-menu-btn d-lg-none ms-auto me-2" type="button" data-bs-toggle="collapse" data-bs-target="#npNavbar" aria-controls="npNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+        </button>
+
+        <!-- Saved Stays Button (Available on all screens) -->
+        <button type="button" class="np-nav-saved-btn order-lg-last" data-bs-toggle="modal" data-bs-target="#savedStaysModal" aria-label="View Saved Stays">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+          <span>Saved</span>
+          <span class="np-saved-count">0</span>
+        </button>
+
+        <!-- Navigation Links -->
+        <div class="collapse navbar-collapse" id="npNavbar">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-1 pt-2 pt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link np-nav-link active" aria-current="page" href="stays.html">Stays Directory</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link np-nav-link" href="room-details.html">Room Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link np-nav-link" href="stay-reservation.html">Stay Reservation</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================================================================
+         HERO SECTION: Navy-to-green gradient, jagged mountain silhouette, search card
+         ====================================================================== -->
+    <section class="np-hero text-center" aria-labelledby="hero-title">
+      <div class="container position-relative" style="z-index: 2;">
+        <!-- Pill Badge -->
+        <div class="np-hero-badge">
+          <span>🏔️ Northern Pakistan Expedition 2026</span>
+        </div>
+
+        <!-- Big Bold Title (Single H1) -->
+        <h1 id="hero-title" class="np-hero-title">
+          Handpicked Mountain Stays & Alpine Chalets
+        </h1>
+
+        <!-- Short Subtitle -->
+        <p class="np-hero-subtitle">
+          Experience authentic Karakoram, Himalayan, and Hindukush hospitality. Real-time season pricing, winter access advisories, and direct room reservations.
+        </p>
+
+        <!-- Search Card with soft shadow -->
+        <div class="np-search-card text-start">
+          <form id="searchForm" novalidate>
+            <div class="np-search-grid">
+              
+              <!-- Destination -->
+              <div class="np-field-group">
+                <label for="destInput" class="np-field-label">Destination</label>
+                <select id="destInput" class="np-select" aria-label="Select destination">
+                  <option value="all">All Destinations (Gilgit-Baltistan & KP)</option>
+                  <option value="hunza">Hunza Valley (Karimabad)</option>
+                  <option value="duikar">Duikar (Eagle's Nest)</option>
+                  <option value="skardu">Skardu (Lower Kachura)</option>
+                  <option value="naltar">Naltar Valley (Ski Resort)</option>
+                  <option value="kalam">Swat Valley (Kalam Forest)</option>
+                  <option value="naran">Kaghan Valley (Naran)</option>
+                </select>
+              </div>
+
+              <!-- Check-in -->
+              <div class="np-field-group">
+                <label for="checkinInput" class="np-field-label">Check-in Date</label>
+                <input type="date" id="checkinInput" class="np-input" required />
+              </div>
+
+              <!-- Check-out -->
+              <div class="np-field-group">
+                <label for="checkoutInput" class="np-field-label">Check-out Date</label>
+                <input type="date" id="checkoutInput" class="np-input" required />
+              </div>
+
+              <!-- Guests -->
+              <div class="np-field-group">
+                <label for="guestsInput" class="np-field-label">Guests</label>
+                <select id="guestsInput" class="np-select" aria-label="Select number of guests">
+                  <option value="1">1 Guest</option>
+                  <option value="2" selected>2 Guests</option>
+                  <option value="3">3 Guests</option>
+                  <option value="4">4 Guests</option>
+                  <option value="5">5 Guests</option>
+                  <option value="6">6 Guests</option>
+                </select>
+              </div>
+
+              <!-- Actions (Search & Reset) -->
+              <div class="np-search-actions">
+                <button type="submit" class="np-btn np-btn-primary" id="searchSubmitBtn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                  </svg>
+                  Search
+                </button>
+                <button type="button" class="np-btn np-btn-secondary" id="resetSearchBtn" title="Reset all search filters">
+                  Reset
+                </button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Jagged Mountain Silhouette: Overlapping dual SVG polygons (navy and dark green) -->
+      <div class="np-hero-silhouette" aria-hidden="true">
+        <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
+          <!-- Back dark green polygon layer -->
+          <polygon points="0,90 0,45 120,20 280,62 430,15 620,70 780,25 940,68 1120,18 1280,60 1440,30 1440,90" fill="#064e3b" opacity="0.9" />
+          <!-- Front deep navy polygon layer -->
+          <polygon points="0,90 0,60 180,30 340,75 510,35 680,80 860,32 1030,78 1220,38 1360,70 1440,50 1440,90" fill="#09192b" />
+        </svg>
+      </div>
+    </section>
+
+
+    <!-- ======================================================================
+         ADVISORY CAROUSEL: Slightly overlaps hero, 3 slides with gradients & glassy stat boxes
+         ====================================================================== -->
+    <section class="container np-carousel-section" aria-label="Seasonal Mountain Travel Advisories">
+      <div id="advisoryCarousel" class="carousel slide np-carousel-inner" data-bs-ride="carousel" data-bs-interval="6000">
+        
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#advisoryCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1: Peak Booking Seasons"></button>
+          <button type="button" data-bs-target="#advisoryCarousel" data-bs-slide-to="1" aria-label="Slide 2: Heating & Power Backup"></button>
+          <button type="button" data-bs-target="#advisoryCarousel" data-bs-slide-to="2" aria-label="Slide 3: High-Altitude Road Access"></button>
+        </div>
+
+        <div class="carousel-inner">
+          <!-- Slide 1: Peak Booking Seasons (Navy gradient) -->
+          <div class="carousel-item active">
+            <div class="np-slide np-slide-navy">
+              <span class="np-slide-tag">Trip Planning Advisory</span>
+              <h2 class="np-slide-heading">Peak Booking Seasons & Blossom Periods</h2>
+              <p class="np-slide-text">
+                Summer (June–August) and the Hunza Autumn Foliage / Cherry Blossom windows reach 95% occupancy across northern lodges. Book at least 3 weeks ahead for confirmed room availability.
+              </p>
+              <div class="np-stat-grid">
+                <div class="np-glass-stat">
+                  <span class="np-glass-stat-val">Apr & Oct</span>
+                  <span class="np-glass-stat-lbl">Blossom & Foliage Seasons</span>
+                </div>
+                <div class="np-glass-stat">
+                  <span class="np-glass-stat-val">15% Surcharge</span>
+                  <span class="np-glass-stat-lbl">Peak Summer Logistics</span>
+                </div>
+                <div class="np-glass-stat">
+                  <span class="np-glass-stat-val">10% Savings</span>
+                  <span class="np-glass-stat-lbl">Long Stay (5+ Nights)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2: Heating & Power Backup (Green gradient) -->
+          <div class="carousel-item">
+            <div class="np-slide np-slide-green">
+              <span class="np-slide-tag">Winter Comfort Standard</span>
+              <h2 class="np-slide-heading">High-Altitude Heating & 24/7 Power Backup</h2>
+              <p class="np-slide-text">
+                Sub-zero mountain nights require dependable infrastructure. Our partner lodges maintain certified wood-pellet bukharis, heated mattress pads, and hybrid solar/generator power backup.
+              </p>
+              <div class="np-stat-grid">
+                <div class="np-glass-stat">
+                  <span class="np-glass-stat-val">100% Tested</span>
+                  <span class="np-glass-stat-lbl">Winter-Rated Properties</span>
+                </div>
+                <div class="np-glass-stat">
+                  <span class="np-glass-stat-val">-12°C Tested</span>
+                  <span class="np-glass-stat-lbl">Insulation & Heating</span>
+                </div>
+                <div class="np-glass-stat">
+                  <span class="np-glass-stat-val">24/7 Hot Water</span>
+                  <span class="np-glass-stat-lbl">Dedicated Boilers</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Road Access & High Altitude (Mixed Navy/Green gradient) -->
+          <div class="carousel-item">
+            <div class="np-slide np-slide-mixed">
+              <span class="np-slide-tag">Transit & Transit Logistics</span>
+              <h2 class="np-slide-heading">4x4 Mountain Road Access & Weather Preparedness</h2>
+              <p class="np-slide-text">
+                Properties in Naltar, Duikar, and upper Swat may require 4WD vehicles. Check winter road passability when planning your journey through Babusar Pass and Lowari Tunnel.
+              </p>
+              <div class="np-stat-grid">
+                <div class="np-glass-stat">
+                  <span class="np-glass-stat-val">2,850m Alt</span>
+                  <span class="np-glass-stat-lbl">Highest Property (Duikar)</span>
+                </div>
+                <div class="np-glass-stat">
+                  <span class="np-glass-stat-val">N-15 & KKH</span>
+                  <span class="np-glass-stat-lbl">Live Highway Monitoring</span>
+                </div>
+                <div class="np-glass-stat">
+                  <span class="np-glass-stat-val">4x4 Support</span>
+                  <span class="np-glass-stat-lbl">Airport / Basecamp Shuttles</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#advisoryCarousel" data-bs-slide="prev" aria-label="Previous advisory slide">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#advisoryCarousel" data-bs-slide="next" aria-label="Next advisory slide">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ======================================================================
+         MAIN CONTENT: Stays Directory Grid, Destination Pills & Sorting
+         ====================================================================== -->
+    <section class="container np-stays-container" aria-label="Browse Lodges and Hotels">
+      
+      <!-- Filter Pills & Sorting Row -->
+      <div class="np-controls-bar">
+        <!-- Destination Filter Pills -->
+        <div class="np-pills-row" id="destinationPills" role="group" aria-label="Filter stays by destination">
+          <button type="button" class="np-pill-btn active" data-dest="all" aria-pressed="true">All Stays</button>
+          <button type="button" class="np-pill-btn" data-dest="hunza" aria-pressed="false">Hunza Valley</button>
+          <button type="button" class="np-pill-btn" data-dest="duikar" aria-pressed="false">Duikar (Eagle's Nest)</button>
+          <button type="button" class="np-pill-btn" data-dest="skardu" aria-pressed="false">Skardu</button>
+          <button type="button" class="np-pill-btn" data-dest="naltar" aria-pressed="false">Naltar Valley</button>
+          <button type="button" class="np-pill-btn" data-dest="kalam" aria-pressed="false">Swat (Kalam)</button>
+          <button type="button" class="np-pill-btn" data-dest="naran" aria-pressed="false">Kaghan (Naran)</button>
+        </div>
+
+        <!-- Sort Dropdown -->
+        <div class="np-sort-wrapper">
+          <label for="sortSelect" class="np-sort-label">Sort By:</label>
+          <select id="sortSelect" class="np-select" style="min-width: 195px; padding: 0.45rem 0.8rem; font-size: 0.88rem;">
+            <option value="recommended" selected>Recommended</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Live Count for Accessibility -->
+      <div id="resultsCount" class="np-results-count" aria-live="polite">
+        Showing stays in Northern Pakistan...
+      </div>
+
+      <!-- Hotel Cards Grid -->
+      <div id="hotelGrid" class="np-hotel-grid" aria-label="Lodges and hotels list">
+        <!-- Dynamically rendered by js/stays.js -->
+      </div>
+
+      <!-- Empty State (Centered dashed-border with reset button) -->
+      <div id="emptyState" class="np-empty-state d-none" role="status">
+        <svg class="np-empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M16 16s-1.5-2-4-2-4 2-4 2"></path>
+          <line x1="9" y1="9" x2="9.01" y2="9"></line>
+          <line x1="15" y1="9" x2="15.01" y2="9"></line>
+        </svg>
+        <h2 class="np-empty-title">No Stays Match Your Criteria</h2>
+        <p class="np-empty-desc">
+          We couldn't find any stays matching your selected destination or guest party size. Try reducing the guest count or browsing all destinations.
+        </p>
+        <button type="button" id="emptyResetBtn" class="np-btn np-btn-primary">
+          Reset All Filters
+        </button>
+      </div>
+
+    </section>
+  </main>
+
+
+  <!-- ======================================================================
+       SAVED STAYS MODAL (Identical across pages)
+       ====================================================================== -->
+  <div class="modal fade np-modal" id="savedStaysModal" tabindex="-1" aria-labelledby="savedStaysModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="savedStaysModalLabel">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#059669">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            Saved Stays (<span class="np-saved-count">0</span>)
+          </h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close modal"></button>
+        </div>
+        <div class="modal-body">
+          <div id="savedListContainer">
+            <!-- Populated dynamically by stays.js -->
+          </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" id="clearSavedBtn" class="np-btn np-btn-danger np-btn-sm">
+            Clear All Saved
+          </button>
+          <button type="button" class="np-btn np-btn-secondary np-btn-sm" data-bs-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ======================================================================
+       SHARED FOOTER (Dark navy, 3 columns, identical across pages)
+       ====================================================================== -->
+  <footer class="np-footer">
+    <div class="container">
+      <div class="row g-4">
+        
+        <!-- Column 1: Brand & Description -->
+        <div class="col-lg-4 col-md-6">
+          <div class="np-footer-brand">
+            NorthPeak <span>Tours</span>
+          </div>
+          <p class="np-footer-desc">
+            Curated authentic mountain stays and eco-expeditions across the Karakoram, Western Himalayas, and Hindukush valleys of Pakistan.
+          </p>
+          <p class="mb-1" style="font-size: 0.9rem;">
+            <strong>Inquiries:</strong> <a href="mailto:info@northpeaktours.pk" class="text-decoration-underline" style="color: #cbd5e1;">info@northpeaktours.pk</a>
+          </p>
+          <p class="mb-0" style="font-size: 0.9rem;">
+            <strong>Reservations:</strong> <a href="mailto:bookings@northpeaktours.pk" class="text-decoration-underline" style="color: #cbd5e1;">bookings@northpeaktours.pk</a>
+          </p>
+        </div>
+
+        <!-- Column 2: Quick Navigation -->
+        <div class="col-lg-3 col-md-6 ps-lg-4">
+          <h3 class="np-footer-heading">Quick Navigation</h3>
+          <ul class="np-footer-links">
+            <li><a href="stays.html">Stays Directory</a></li>
+            <li><a href="room-details.html">Room Details</a></li>
+            <li><a href="stay-reservation.html">Stay Reservation</a></li>
+            <li><a href="stays.html?destination=hunza">Hunza Lodges</a></li>
+            <li><a href="stays.html?destination=skardu">Skardu Lakeside Retreats</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Northern Helpline -->
+        <div class="col-lg-5 col-md-12">
+          <h3 class="np-footer-heading">Northern Helpline</h3>
+          <div class="np-helpline-box">
+            <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: #94a3b8;">
+              Gilgit & Skardu Basecamp Desk
+            </div>
+            <div class="np-helpline-num">
+              +92 5811 450920
+            </div>
+            <div style="font-size: 0.85rem; color: #cbd5e1; margin-top: 0.25rem;">
+              Safety & Emergency: <a href="mailto:safety@northpeaktours.pk" style="color: #6ee7b7;">safety@northpeaktours.pk</a>
+            </div>
+          </div>
+          <div class="d-flex align-items-center gap-3">
+            <span style="font-size: 0.88rem; color: #cbd5e1;">Connect With Us:</span>
+            <div class="np-social-links m-0">
+              <a href="https://facebook.com" class="np-social-btn" aria-label="Visit NorthPeak Tours Facebook" target="_blank" rel="noopener noreferrer">FB</a>
+              <a href="https://instagram.com" class="np-social-btn" aria-label="Visit NorthPeak Tours Instagram" target="_blank" rel="noopener noreferrer">IG</a>
+              <a href="https://x.com" class="np-social-btn" aria-label="Visit NorthPeak Tours X" target="_blank" rel="noopener noreferrer">X</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="np-footer-divider" />
+
+      <!-- Copyright Line -->
+      <div class="np-footer-copy">
+        &copy; 2026 NorthPeak Tours. All rights reserved. Built for Northern Pakistan mountain hospitality.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- Application Scripts -->
+  <script src="../js/hotels-data.js"></script>
+  <script src="../js/stays.js"></script>
+</body>
+</html>
